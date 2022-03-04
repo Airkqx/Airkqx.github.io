@@ -1,22 +1,265 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>密码学刷题 - Air</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Air&#039;s blog"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Air&#039;s blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="备战省赛，做点简单的密码学题  抄错的字符老师让小明抄写一段话，结果粗心的小明把部分数字抄成了字母，还因为强迫症把所有字母都换成大写。你能帮小明恢复并解开答案吗：QWIHBLGZZXJSXZNVBZW 先全转化为小写看看 qwihblgzzxjsxznvbzw   1-&amp;gt;i 6-&amp;gt;b 2-&amp;gt;z  9-&amp;gt;g 5-&amp;gt;s 太牛马了 12345678910111213141"><meta property="og:type" content="blog"><meta property="og:title" content="密码学刷题"><meta property="og:url" content="http://example.com/2021/10/14/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%88%B7%E9%A2%98/"><meta property="og:site_name" content="Air"><meta property="og:description" content="备战省赛，做点简单的密码学题  抄错的字符老师让小明抄写一段话，结果粗心的小明把部分数字抄成了字母，还因为强迫症把所有字母都换成大写。你能帮小明恢复并解开答案吗：QWIHBLGZZXJSXZNVBZW 先全转化为小写看看 qwihblgzzxjsxznvbzw   1-&amp;gt;i 6-&amp;gt;b 2-&amp;gt;z  9-&amp;gt;g 5-&amp;gt;s 太牛马了 12345678910111213141"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://img-blog.csdnimg.cn/2021011716212098.png"><meta property="og:image" content="http://example.com/2021/10/14/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%88%B7%E9%A2%98/image-20211015095600891.png"><meta property="og:image" content="http://example.com/2021/10/14/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%88%B7%E9%A2%98/image-20211015100055646.png"><meta property="og:image" content="https://img-blog.csdnimg.cn/1ec2d1c05be842d88acf36f9cb5b4e62.png"><meta property="article:published_time" content="2021-10-14T03:02:29.000Z"><meta property="article:modified_time" content="2021-10-15T06:44:10.157Z"><meta property="article:author" content="Air"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://img-blog.csdnimg.cn/2021011716212098.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2021/10/14/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%88%B7%E9%A2%98/"},"headline":"密码学刷题","image":["https://img-blog.csdnimg.cn/2021011716212098.png","http://example.com/2021/10/14/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%88%B7%E9%A2%98/image-20211015095600891.png","http://example.com/2021/10/14/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%88%B7%E9%A2%98/image-20211015100055646.png","https://img-blog.csdnimg.cn/1ec2d1c05be842d88acf36f9cb5b4e62.png"],"datePublished":"2021-10-14T03:02:29.000Z","dateModified":"2021-10-15T06:44:10.157Z","author":{"@type":"Person","name":"Air"},"publisher":{"@type":"Organization","name":"Air","logo":{"@type":"ImageObject","url":"http://example.com/img/logo.svg"}},"description":"备战省赛，做点简单的密码学题  抄错的字符老师让小明抄写一段话，结果粗心的小明把部分数字抄成了字母，还因为强迫症把所有字母都换成大写。你能帮小明恢复并解开答案吗：QWIHBLGZZXJSXZNVBZW 先全转化为小写看看 qwihblgzzxjsxznvbzw   1-&gt;i 6-&gt;b 2-&gt;z  9-&gt;g 5-&gt;s 太牛马了 12345678910111213141"}</script><link rel="canonical" href="http://example.com/2021/10/14/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%88%B7%E9%A2%98/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Air" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2021-10-14T03:02:29.000Z" title="2021/10/14 上午11:02:29">2021-10-14</time></span><span class="level-item">Updated&nbsp;<time dateTime="2021-10-15T06:44:10.157Z" title="2021/10/15 下午2:44:10">2021-10-15</time></span><span class="level-item">17 minutes read (About 2520 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">密码学刷题</h1><div class="content"><blockquote>
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Air">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="备战省赛，做点简单的密码学题  抄错的字符老师让小明抄写一段话，结果粗心的小明把部分数字抄成了字母，还因为强迫症把所有字母都换成大写。你能帮小明恢复并解开答案吗：QWIHBLGZZXJSXZNVBZW 先全转化为小写看看 qwihblgzzxjsxznvbzw   1-&gt;i 6-&gt;b 2-&gt;z  9-&gt;g 5-&gt;s 太牛马了 12345678910111213141">
+<meta property="og:type" content="article">
+<meta property="og:title" content="密码学刷题">
+<meta property="og:url" content="http://example.com/2021/10/14/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%88%B7%E9%A2%98/index.html">
+<meta property="og:site_name" content="Air">
+<meta property="og:description" content="备战省赛，做点简单的密码学题  抄错的字符老师让小明抄写一段话，结果粗心的小明把部分数字抄成了字母，还因为强迫症把所有字母都换成大写。你能帮小明恢复并解开答案吗：QWIHBLGZZXJSXZNVBZW 先全转化为小写看看 qwihblgzzxjsxznvbzw   1-&gt;i 6-&gt;b 2-&gt;z  9-&gt;g 5-&gt;s 太牛马了 12345678910111213141">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2021011716212098.png">
+<meta property="og:image" content="http://example.com/2021/10/14/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%88%B7%E9%A2%98/image-20211015095600891.png">
+<meta property="og:image" content="http://example.com/2021/10/14/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%88%B7%E9%A2%98/image-20211015100055646.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/1ec2d1c05be842d88acf36f9cb5b4e62.png">
+<meta property="article:published_time" content="2021-10-14T03:02:29.000Z">
+<meta property="article:modified_time" content="2021-10-15T06:44:10.157Z">
+<meta property="article:author" content="Air">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/2021011716212098.png">
+  
+  
+  <title>密码学刷题 - Air</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="密码学刷题">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-10-14 11:02" pubdate>
+        2021年10月14日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      21k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      176 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">密码学刷题</h1>
+            
+            <div class="markdown-body">
+              <blockquote>
 <p>备战省赛，做点简单的密码学题</p>
 </blockquote>
 <h1 id="抄错的字符"><a href="#抄错的字符" class="headerlink" title="抄错的字符"></a>抄错的字符</h1><p>老师让小明抄写一段话，结果粗心的小明把部分数字抄成了字母，还因为强迫症把所有字母都换成大写。你能帮小明恢复并解开答案吗：QWIHBLGZZXJSXZNVBZW</p>
 <p>先全转化为小写看看</p>
 <p>qwihblgzzxjsxznvbzw   1-&gt;i 6-&gt;b 2-&gt;z  9-&gt;g 5-&gt;s</p>
 <p>太牛马了</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$list</span>=[];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params"><span class="variable">$str</span>,<span class="variable">$index</span>=<span class="number">0</span></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$index</span>==strlen(<span class="variable">$str</span>))&#123;</span><br><span class="line">        <span class="keyword">global</span> <span class="variable">$list</span>;</span><br><span class="line">        <span class="variable">$ret</span>=base64_decode(<span class="variable">$str</span>);</span><br><span class="line">        <span class="variable">$list</span>[]=<span class="variable">$ret</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable">$head</span>=substr(<span class="variable">$str</span>,<span class="number">0</span>,<span class="variable">$index</span>);</span><br><span class="line">    <span class="variable">$mid</span>=substr(<span class="variable">$str</span>,<span class="variable">$index</span>,<span class="number">1</span>);</span><br><span class="line">    <span class="variable">$end</span>=substr(<span class="variable">$str</span>,<span class="variable">$index</span>+<span class="number">1</span>,strlen(<span class="variable">$str</span>)-<span class="variable">$index</span>);</span><br><span class="line">    <span class="variable">$words</span>=getWord(<span class="variable">$mid</span>);</span><br><span class="line">    <span class="keyword">foreach</span> (<span class="variable">$words</span> <span class="keyword">as</span> <span class="variable">$key</span>=&gt;<span class="variable">$v</span>)&#123;</span><br><span class="line">        <span class="variable">$newStr</span>=<span class="variable">$head</span>.<span class="variable">$v</span>;</span><br><span class="line">        <span class="variable">$ret</span>=base64_decode(<span class="variable">$newStr</span>);</span><br><span class="line">        <span class="keyword">if</span>(!preg_match(<span class="string">&#x27;/[^a-zA-Z\d\_\-]/is&#x27;</span>,<span class="variable">$ret</span>))&#123;</span><br><span class="line">            fun(<span class="variable">$newStr</span>.<span class="variable">$end</span>,<span class="variable">$index</span>+<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getWord</span>(<span class="params"><span class="variable">$c</span></span>)</span>&#123;</span><br><span class="line">    <span class="variable">$word</span>=[<span class="string">&quot;I&quot;</span>=&gt;<span class="number">1</span>, <span class="string">&#x27;L&#x27;</span>=&gt;<span class="number">1</span>, <span class="string">&#x27;G&#x27;</span>=&gt;<span class="number">9</span>, <span class="string">&#x27;Z&#x27;</span>=&gt;<span class="number">2</span>, <span class="string">&#x27;S&#x27;</span>=&gt;<span class="number">5</span>];</span><br><span class="line">    <span class="variable">$arr</span>=[<span class="variable">$c</span>,strtolower(<span class="variable">$c</span>)];</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$word</span>[<span class="variable">$c</span>]))&#123;</span><br><span class="line">        <span class="variable">$arr</span>[]=<span class="variable">$word</span>[<span class="variable">$c</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$arr</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$str</span>=<span class="string">&quot;QWIHBLGZZXJSXZNVBZW&quot;</span>;</span><br><span class="line">fun(<span class="variable">$str</span>);</span><br><span class="line">var_dump(<span class="variable">$list</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></div></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-variable">$list</span>=[];<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fun</span>(<span class="hljs-params"><span class="hljs-variable">$str</span>,<span class="hljs-variable">$index</span>=<span class="hljs-number">0</span></span>)</span>&#123;<br><br>    <span class="hljs-keyword">if</span>(<span class="hljs-variable">$index</span>==strlen(<span class="hljs-variable">$str</span>))&#123;<br>        <span class="hljs-keyword">global</span> <span class="hljs-variable">$list</span>;<br>        <span class="hljs-variable">$ret</span>=base64_decode(<span class="hljs-variable">$str</span>);<br>        <span class="hljs-variable">$list</span>[]=<span class="hljs-variable">$ret</span>;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125;<br>    <span class="hljs-variable">$head</span>=substr(<span class="hljs-variable">$str</span>,<span class="hljs-number">0</span>,<span class="hljs-variable">$index</span>);<br>    <span class="hljs-variable">$mid</span>=substr(<span class="hljs-variable">$str</span>,<span class="hljs-variable">$index</span>,<span class="hljs-number">1</span>);<br>    <span class="hljs-variable">$end</span>=substr(<span class="hljs-variable">$str</span>,<span class="hljs-variable">$index</span>+<span class="hljs-number">1</span>,strlen(<span class="hljs-variable">$str</span>)-<span class="hljs-variable">$index</span>);<br>    <span class="hljs-variable">$words</span>=getWord(<span class="hljs-variable">$mid</span>);<br>    <span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$words</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$key</span>=&gt;<span class="hljs-variable">$v</span>)&#123;<br>        <span class="hljs-variable">$newStr</span>=<span class="hljs-variable">$head</span>.<span class="hljs-variable">$v</span>;<br>        <span class="hljs-variable">$ret</span>=base64_decode(<span class="hljs-variable">$newStr</span>);<br>        <span class="hljs-keyword">if</span>(!preg_match(<span class="hljs-string">&#x27;/[^a-zA-Z\d\_\-]/is&#x27;</span>,<span class="hljs-variable">$ret</span>))&#123;<br>            fun(<span class="hljs-variable">$newStr</span>.<span class="hljs-variable">$end</span>,<span class="hljs-variable">$index</span>+<span class="hljs-number">1</span>);<br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getWord</span>(<span class="hljs-params"><span class="hljs-variable">$c</span></span>)</span>&#123;<br>    <span class="hljs-variable">$word</span>=[<span class="hljs-string">&quot;I&quot;</span>=&gt;<span class="hljs-number">1</span>, <span class="hljs-string">&#x27;L&#x27;</span>=&gt;<span class="hljs-number">1</span>, <span class="hljs-string">&#x27;G&#x27;</span>=&gt;<span class="hljs-number">9</span>, <span class="hljs-string">&#x27;Z&#x27;</span>=&gt;<span class="hljs-number">2</span>, <span class="hljs-string">&#x27;S&#x27;</span>=&gt;<span class="hljs-number">5</span>];<br>    <span class="hljs-variable">$arr</span>=[<span class="hljs-variable">$c</span>,strtolower(<span class="hljs-variable">$c</span>)];<br>    <span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$word</span>[<span class="hljs-variable">$c</span>]))&#123;<br>        <span class="hljs-variable">$arr</span>[]=<span class="hljs-variable">$word</span>[<span class="hljs-variable">$c</span>];<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-variable">$arr</span>;<br>&#125;<br><span class="hljs-variable">$str</span>=<span class="hljs-string">&quot;QWIHBLGZZXJSXZNVBZW&quot;</span>;<br>fun(<span class="hljs-variable">$str</span>);<br>var_dump(<span class="hljs-variable">$list</span>);<br><span class="hljs-meta">?&gt;</span><br><br></code></pre></td></tr></table></figure>
 
 <p>找到了一个php的脚本，跑一下 得出了结果</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;Aman_very_cool&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dust"><span class="xml">flag</span><span class="hljs-template-variable">&#123;Aman_very_cool&#125;</span><br></code></pre></td></tr></table></figure>
 
 
 
-<h1 id><a href="#" class="headerlink" title="/.-"></a>/.-</h1><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">..-./.-../.-/--./----.--/-../...--/..-./-.-./-.../..-./.----/--.../..-./----./...--/----./----./...../-----/....-/-----.-</span><br></pre></td></tr></table></figure>
+<h1 id><a href="#" class="headerlink" title="/.-"></a>/.-</h1><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs tex">..-./.-../.-/--./----.--/-../...--/..-./-.-./-.../..-./.----/--.../..-./----./...--/----./----./...../-----/....-/-----.-<br></code></pre></td></tr></table></figure>
 
 <p>摩斯密码 ，最后全是小写 注意大小写就行</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;d3fcbf17f9399504&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">flag</span>&#123;d<span class="hljs-number">3</span>fcbf<span class="hljs-number">17</span>f<span class="hljs-number">9399504</span>&#125;<br></code></pre></td></tr></table></figure>
 
 
 
@@ -24,40 +267,40 @@
 <p>栅栏密码</p>
 <p><a target="_blank" rel="noopener" href="https://www.qqxiuzi.cn/bianma/zhalanmima.php">https://www.qqxiuzi.cn/bianma/zhalanmima.php</a></p>
 <p>字数为2，直接解密就行</p>
-<h1 id="ok"><a href="#ok" class="headerlink" title="ok"></a>ok</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook.Ook. Ook. Ook. Ook. Ook. Ook! Ook? Ook! Ook! Ook. Ook? Ook. Ook. Ook. Ook.Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook.Ook. Ook? Ook. Ook? Ook! Ook. Ook? Ook. Ook. Ook. Ook. Ook! Ook. Ook. Ook.Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook! Ook. Ook? Ook. Ook.Ook. Ook. Ook. Ook. Ook. Ook! Ook? Ook! Ook! Ook. Ook? Ook! Ook! Ook! Ook!Ook! Ook! Ook? Ook. Ook? Ook! Ook. Ook? Ook! Ook! Ook! Ook! Ook! Ook. Ook.Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook! Ook. Ook? Ook.Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook! Ook? Ook! Ook! Ook. Ook? Ook.Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook? Ook. Ook? Ook! Ook. Ook? Ook. Ook.Ook. Ook. Ook. Ook. Ook. Ook. Ook! Ook. Ook? Ook. Ook. Ook. Ook. Ook. Ook.Ook. Ook! Ook? Ook! Ook! Ook. Ook? Ook! Ook! Ook! Ook! Ook! Ook! Ook? Ook.Ook? Ook! Ook. Ook? Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook. Ook! Ook! Ook!Ook! Ook! Ook! Ook! Ook! Ook! Ook. Ook? Ook. Ook. Ook. Ook. Ook. Ook. Ook.Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook! Ook? Ook! Ook! Ook. Ook? Ook!Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook? Ook.Ook? Ook! Ook. Ook? Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook!Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook!Ook! Ook. Ook? Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook.Ook. Ook. Ook. Ook! Ook? Ook! Ook! Ook. Ook? Ook. Ook. Ook. Ook. Ook. Ook.Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook? Ook. Ook? Ook! Ook. Ook? Ook.Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook! Ook. Ook? Ook. Ook. Ook.Ook. Ook. Ook. Ook. Ook. Ook. Ook! Ook? Ook! Ook! Ook. Ook? Ook. Ook. Ook.Ook. Ook. Ook. Ook. Ook. Ook? Ook. Ook? Ook! Ook. Ook? Ook. Ook. Ook! Ook.Ook? Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook! Ook? Ook! Ook! Ook. Ook? Ook!Ook! Ook! Ook! Ook! Ook! Ook? Ook. Ook? Ook! Ook. Ook? Ook! Ook! Ook! Ook!Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook. Ook? Ook. Ook. Ook. Ook. Ook. Ook.Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook! Ook? Ook! Ook! Ook. Ook?Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook?Ook. Ook? Ook! Ook. Ook? Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook!Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook.Ook. Ook! Ook. Ook. Ook. Ook! Ook. Ook. Ook. Ook! Ook. Ook. Ook. Ook! Ook.Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook!Ook. Ook? Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook.Ook. Ook. Ook! Ook? Ook! Ook! Ook. Ook? Ook. Ook. Ook. Ook. Ook. Ook. Ook.Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook? Ook. Ook? Ook! Ook. Ook? Ook. Ook.Ook. Ook. Ook. Ook. Ook! Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook! Ook. Ook.Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook.Ook. Ook. Ook! Ook. Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook. Ook.Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook! Ook. Ook? Ook. Ook. Ook.Ook. Ook. Ook. Ook. Ook! Ook? Ook! Ook! Ook. Ook? Ook. Ook. Ook. Ook. Ook.Ook. Ook? Ook. Ook? Ook! Ook. Ook? Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook.Ook. Ook. Ook. Ook. Ook! Ook. Ook? Ook.</span><br></pre></td></tr></table></figure>
+<h1 id="ok"><a href="#ok" class="headerlink" title="ok"></a>ok</h1><figure class="highlight erlang-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs erlang-repl">Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook.Ook. Ook. Ook. Ook. Ook. Ook! Ook? Ook! Ook! Ook. Ook? Ook. Ook. Ook. Ook.Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook.Ook. Ook? Ook. Ook? Ook! Ook. Ook? Ook. Ook. Ook. Ook. Ook! Ook. Ook. Ook.Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook! Ook. Ook? Ook. Ook.Ook. Ook. Ook. Ook. Ook. Ook! Ook? Ook! Ook! Ook. Ook? Ook! Ook! Ook! Ook!Ook! Ook! Ook? Ook. Ook? Ook! Ook. Ook? Ook! Ook! Ook! Ook! Ook! Ook. Ook.Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook! Ook. Ook? Ook.Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook! Ook? Ook! Ook! Ook. Ook? Ook.Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook? Ook. Ook? Ook! Ook. Ook? Ook. Ook.Ook. Ook. Ook. Ook. Ook. Ook. Ook! Ook. Ook? Ook. Ook. Ook. Ook. Ook. Ook.Ook. Ook! Ook? Ook! Ook! Ook. Ook? Ook! Ook! Ook! Ook! Ook! Ook! Ook? Ook.Ook? Ook! Ook. Ook? Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook. Ook! Ook! Ook!Ook! Ook! Ook! Ook! Ook! Ook! Ook. Ook? Ook. Ook. Ook. Ook. Ook. Ook. Ook.Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook! Ook? Ook! Ook! Ook. Ook? Ook!Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook? Ook.Ook? Ook! Ook. Ook? Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook!Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook!Ook! Ook. Ook? Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook.Ook. Ook. Ook. Ook! Ook? Ook! Ook! Ook. Ook? Ook. Ook. Ook. Ook. Ook. Ook.Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook? Ook. Ook? Ook! Ook. Ook? Ook.Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook! Ook. Ook? Ook. Ook. Ook.Ook. Ook. Ook. Ook. Ook. Ook. Ook! Ook? Ook! Ook! Ook. Ook? Ook. Ook. Ook.Ook. Ook. Ook. Ook. Ook. Ook? Ook. Ook? Ook! Ook. Ook? Ook. Ook. Ook! Ook.Ook? Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook! Ook? Ook! Ook! Ook. Ook? Ook!Ook! Ook! Ook! Ook! Ook! Ook? Ook. Ook? Ook! Ook. Ook? Ook! Ook! Ook! Ook!Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook. Ook? Ook. Ook. Ook. Ook. Ook. Ook.Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook! Ook? Ook! Ook! Ook. Ook?Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook?Ook. Ook? Ook! Ook. Ook? Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook!Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook.Ook. Ook! Ook. Ook. Ook. Ook! Ook. Ook. Ook. Ook! Ook. Ook. Ook. Ook! Ook.Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook!Ook. Ook? Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook.Ook. Ook. Ook! Ook? Ook! Ook! Ook. Ook? Ook. Ook. Ook. Ook. Ook. Ook. Ook.Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook? Ook. Ook? Ook! Ook. Ook? Ook. Ook.Ook. Ook. Ook. Ook. Ook! Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook! Ook. Ook.Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook.Ook. Ook. Ook! Ook. Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook. Ook.Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook! Ook. Ook? Ook. Ook. Ook.Ook. Ook. Ook. Ook. Ook! Ook? Ook! Ook! Ook. Ook? Ook. Ook. Ook. Ook. Ook.Ook. Ook? Ook. Ook? Ook! Ook. Ook? Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook.Ook. Ook. Ook. Ook. Ook! Ook. Ook? Ook.<br></code></pre></td></tr></table></figure>
 
 <p>ok加密</p>
 <p><a target="_blank" rel="noopener" href="https://www.splitbrain.org/services/ook">https://www.splitbrain.org/services/ook</a></p>
 <p>flag{0a394df55312c51a}</p>
-<h1 id="lt-gt"><a href="#lt-gt" class="headerlink" title="[+-&lt;&gt;]"></a>[+-&lt;&gt;]</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">+++++ +++++ [-&gt;++ +++++ +++&lt;] &gt;++.+ +++++ .&lt;+++ [-&gt;-- -&lt;]&gt;- -.+++ +++.&lt; ++++[ -&gt;+++ +&lt;]&gt;+ +++.&lt; +++++ +++[- &gt;---- ----&lt; ]&gt;--- ----- ---.&lt; +++++ ++[-&gt; +++++ ++&lt;]&gt; +++.&lt; +++++ +[-&gt;- ----- &lt;]&gt;-- ----- -.--. ----. --.++ +++++ +.&lt;++ ++++[ -&gt;+++ +++&lt;] &gt;++++ +.++. &lt;++++ ++[-&gt; ----- -&lt;]&gt;- ----- ----. -.&lt;++ +++++ [-&gt;++ +++++ &lt;]&gt;+. ----. ++++. &lt;++++ +++[- &gt;---- ---&lt;] &gt;---- .+.&lt;+ +++++ ++[-&gt; +++++ +++&lt;] &gt;++++ +++++ ++.&lt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="lt-gt"><a href="#lt-gt" class="headerlink" title="[+-&lt;&gt;]"></a>[+-&lt;&gt;]</h1><figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs brainfuck">++<span class="hljs-literal">+</span><span class="hljs-literal">+</span><span class="hljs-literal">+</span> ++<span class="hljs-literal">+</span><span class="hljs-literal">+</span><span class="hljs-literal">+</span> <span class="hljs-title">[</span><span class="hljs-literal">-</span>&gt;++ ++<span class="hljs-literal">+</span><span class="hljs-literal">+</span><span class="hljs-literal">+</span> ++<span class="hljs-literal">+</span>&lt;<span class="hljs-title">]</span> &gt;++<span class="hljs-string">.</span><span class="hljs-literal">+</span> ++<span class="hljs-literal">+</span><span class="hljs-literal">+</span><span class="hljs-literal">+</span> <span class="hljs-string">.</span>&lt;++<span class="hljs-literal">+</span> <span class="hljs-title">[</span><span class="hljs-literal">-</span>&gt;-- <span class="hljs-literal">-</span>&lt;<span class="hljs-title">]</span>&gt;<span class="hljs-literal">-</span> <span class="hljs-literal">-</span><span class="hljs-string">.</span>++<span class="hljs-literal">+</span> ++<span class="hljs-literal">+</span><span class="hljs-string">.</span>&lt; ++<span class="hljs-literal">+</span><span class="hljs-literal">+</span><span class="hljs-title">[</span> <span class="hljs-literal">-</span>&gt;++<span class="hljs-literal">+</span> <span class="hljs-literal">+</span>&lt;<span class="hljs-title">]</span>&gt;<span class="hljs-literal">+</span> ++<span class="hljs-literal">+</span><span class="hljs-string">.</span>&lt; ++<span class="hljs-literal">+</span><span class="hljs-literal">+</span><span class="hljs-literal">+</span> ++<span class="hljs-literal">+</span><span class="hljs-title">[</span><span class="hljs-literal">-</span> &gt;--<span class="hljs-literal">-</span><span class="hljs-literal">-</span> --<span class="hljs-literal">-</span><span class="hljs-literal">-</span>&lt; <span class="hljs-title">]</span>&gt;--<span class="hljs-literal">-</span> --<span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span> --<span class="hljs-literal">-</span><span class="hljs-string">.</span>&lt; ++<span class="hljs-literal">+</span><span class="hljs-literal">+</span><span class="hljs-literal">+</span> ++<span class="hljs-title">[</span><span class="hljs-literal">-</span>&gt; ++<span class="hljs-literal">+</span><span class="hljs-literal">+</span><span class="hljs-literal">+</span> ++&lt;<span class="hljs-title">]</span>&gt; ++<span class="hljs-literal">+</span><span class="hljs-string">.</span>&lt; ++<span class="hljs-literal">+</span><span class="hljs-literal">+</span><span class="hljs-literal">+</span> <span class="hljs-literal">+</span><span class="hljs-title">[</span><span class="hljs-literal">-</span>&gt;<span class="hljs-literal">-</span> --<span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span> &lt;<span class="hljs-title">]</span>&gt;-- --<span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span> <span class="hljs-literal">-</span><span class="hljs-string">.</span>--<span class="hljs-string">.</span> --<span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-string">.</span> --<span class="hljs-string">.</span>++ ++<span class="hljs-literal">+</span><span class="hljs-literal">+</span><span class="hljs-literal">+</span> <span class="hljs-literal">+</span><span class="hljs-string">.</span>&lt;++ ++<span class="hljs-literal">+</span><span class="hljs-literal">+</span><span class="hljs-title">[</span> <span class="hljs-literal">-</span>&gt;++<span class="hljs-literal">+</span> ++<span class="hljs-literal">+</span>&lt;<span class="hljs-title">]</span> &gt;++<span class="hljs-literal">+</span><span class="hljs-literal">+</span> <span class="hljs-literal">+</span><span class="hljs-string">.</span>++<span class="hljs-string">.</span> &lt;++<span class="hljs-literal">+</span><span class="hljs-literal">+</span> ++<span class="hljs-title">[</span><span class="hljs-literal">-</span>&gt; --<span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span> <span class="hljs-literal">-</span>&lt;<span class="hljs-title">]</span>&gt;<span class="hljs-literal">-</span> --<span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span> --<span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-string">.</span> <span class="hljs-literal">-</span><span class="hljs-string">.</span>&lt;++ ++<span class="hljs-literal">+</span><span class="hljs-literal">+</span><span class="hljs-literal">+</span> <span class="hljs-title">[</span><span class="hljs-literal">-</span>&gt;++ ++<span class="hljs-literal">+</span><span class="hljs-literal">+</span><span class="hljs-literal">+</span> &lt;<span class="hljs-title">]</span>&gt;<span class="hljs-literal">+</span><span class="hljs-string">.</span> --<span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-string">.</span> ++<span class="hljs-literal">+</span><span class="hljs-literal">+</span><span class="hljs-string">.</span> &lt;++<span class="hljs-literal">+</span><span class="hljs-literal">+</span> ++<span class="hljs-literal">+</span><span class="hljs-title">[</span><span class="hljs-literal">-</span> &gt;--<span class="hljs-literal">-</span><span class="hljs-literal">-</span> --<span class="hljs-literal">-</span>&lt;<span class="hljs-title">]</span> &gt;--<span class="hljs-literal">-</span><span class="hljs-literal">-</span> <span class="hljs-string">.</span><span class="hljs-literal">+</span><span class="hljs-string">.</span>&lt;<span class="hljs-literal">+</span> ++<span class="hljs-literal">+</span><span class="hljs-literal">+</span><span class="hljs-literal">+</span> ++<span class="hljs-title">[</span><span class="hljs-literal">-</span>&gt; ++<span class="hljs-literal">+</span><span class="hljs-literal">+</span><span class="hljs-literal">+</span> ++<span class="hljs-literal">+</span>&lt;<span class="hljs-title">]</span> &gt;++<span class="hljs-literal">+</span><span class="hljs-literal">+</span> ++<span class="hljs-literal">+</span><span class="hljs-literal">+</span><span class="hljs-literal">+</span> ++<span class="hljs-string">.</span>&lt;<br><br></code></pre></td></tr></table></figure>
 
 <p>brainfuck</p>
 <p>flag{0d86208ac54fbf12}</p>
-<h1 id="把猪困在猪圈里"><a href="#把猪困在猪圈里" class="headerlink" title="把猪困在猪圈里"></a>把猪困在猪圈里</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/9j/4AAQSkZJRgABAQEAYABgAAD/4RDaRXhpZgAATU0AKgAAAAgABAE7AAIAAAAFAAAISodpAAQAAAABAAAIUJydAAEAAAAKAAAQyOocAAcAAAgMAAAAPgAAAAAc6gAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFIwMFQAAAAFkAMAAgAAABQAABCekAQAAgAAABQAABCykpEAAgAAAAM0MQAAkpIAAgAAAAM0MQAA6hwABwAACAwAAAiSAAAAABzqAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMjAyMTowMToxMCAyMjo0MDo1OQAyMDIxOjAxOjEwIDIyOjQwOjU5AAAAUgAwADAAVAAAAP/hCxdodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvADw/eHBhY2tldCBiZWdpbj0n77u/JyBpZD0nVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkJz8+DQo8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIj48cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPjxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSJ1dWlkOmZhZjViZGQ1LWJhM2QtMTFkYS1hZDMxLWQzM2Q3NTE4MmYxYiIgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIi8+PHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9InV1aWQ6ZmFmNWJkZDUtYmEzZC0xMWRhLWFkMzEtZDMzZDc1MTgyZjFiIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iPjx4bXA6Q3JlYXRlRGF0ZT4yMDIxLTAxLTEwVDIyOjQwOjU5LjQxMTwveG1wOkNyZWF0ZURhdGU+PC9yZGY6RGVzY3JpcHRpb24+PHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9InV1aWQ6ZmFmNWJkZDUtYmEzZC0xMWRhLWFkMzEtZDMzZDc1MTgyZjFiIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iPjxkYzpjcmVhdG9yPjxyZGY6U2VxIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+PHJkZjpsaT5SMDBUPC9yZGY6bGk+PC9yZGY6U2VxPg0KCQkJPC9kYzpjcmVhdG9yPjwvcmRmOkRlc2NyaXB0aW9uPjwvcmRmOlJERj48L3g6eG1wbWV0YT4NCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgPD94cGFja2V0IGVuZD0ndyc/Pv/bAEMABwUFBgUEBwYFBggHBwgKEQsK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</span><br></pre></td></tr></table></figure>
+<h1 id="把猪困在猪圈里"><a href="#把猪困在猪圈里" class="headerlink" title="把猪困在猪圈里"></a>把猪困在猪圈里</h1><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">/9j/</span><span class="hljs-number">4</span>AAQSkZJRgABAQEAYABgAAD<span class="hljs-regexp">/4RDaRXhpZgAATU0AKgAAAAgABAE7AAIAAAAFAAAISodpAAQAAAABAAAIUJydAAEAAAAKAAAQyOocAAcAAAgMAAAAPgAAAAAc6gAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFIwMFQAAAAFkAMAAgAAABQAABCekAQAAgAAABQAABCykpEAAgAAAAM0MQAAkpIAAgAAAAM0MQAA6hwABwAACAwAAAiSAAAAABzqAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMjAyMTowMToxMCAyMjo0MDo1OQAyMDIxOjAxOjEwIDIyOjQwOjU5AAAAUgAwADAAVAAAAP/</span>hCxdodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvADw<span class="hljs-regexp">/eHBhY2tldCBiZWdpbj0n77u/</span>JyBpZD0nVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkJz8+DQo8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIj48cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPjxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSJ1dWlkOmZhZjViZGQ1LWJhM2QtMTFkYS1hZDMxLWQzM2Q3NTE4MmYxYiIgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIi8+PHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9InV1aWQ6ZmFmNWJkZDUtYmEzZC0xMWRhLWFkMzEtZDMzZDc1MTgyZjFiIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iPjx4bXA6Q3JlYXRlRGF0ZT4yMDIxLTAxLTEwVDIyOjQwOjU5LjQxMTwveG1wOkNyZWF0ZURhdGU+PC9yZGY6RGVzY3JpcHRpb24+PHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9InV1aWQ6ZmFmNWJkZDUtYmEzZC0xMWRhLWFkMzEtZDMzZDc1MTgyZjFiIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iPjxkYzpjcmVhdG9yPjxyZGY6U2VxIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+PHJkZjpsaT5SMDBUPC9yZGY6bGk+PC9yZGY6U2VxPg0KCQkJPC9kYzpjcmVhdG9yPjwvcmRmOkRlc2NyaXB0aW9uPjwvcmRmOlJERj48L3g6eG1wbWV0YT4NCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgPD94cGFja2V0IGVuZD0ndyc<span class="hljs-regexp">/Pv/</span>bAEMABwUFBgUEBwYFBggHBwgKEQsKCQkKFQ8QDBEYFRoZGBUYFxseJyEbHSUdFxgiLiIlKCkrLCsaIC8zLyoyJyorKv<span class="hljs-regexp">/bAEMBBwgICgkKFAsLFCocGBwqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKv/</span>AABEIADMBcQMBIgACEQEDEQH<span class="hljs-regexp">/xAAfAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgv/</span>xAC1EAACAQMDAgQDBQUEBAAAAX0BAgMABBEFEiExQQYTUWEHInEUMoGRoQgjQrHBFVLR8CQzYnKCCQoWFxgZGiUmJygpKjQ1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4eLj5OXm5+jp6vHy8<span class="hljs-regexp">/T19vf4+fr/</span>xAAfAQADAQEBAQEBAQEBAAAAAAAAAQIDBAUGBwgJCgv<span class="hljs-regexp">/xAC1EQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/</span>T19vf4+fr<span class="hljs-regexp">/2gAMAwEAAhEDEQA/</span>APov7Ha<span class="hljs-regexp">/8+0P/</span>fsUfY7X<span class="hljs-regexp">/n2h/</span>wC<span class="hljs-regexp">/YqaigCH7Ha/</span><span class="hljs-number">8</span>+<span class="hljs-number">0</span>P<span class="hljs-regexp">/AH7FH2O1/</span>wCfaH<span class="hljs-regexp">/v2KmooAh+x2v/</span>AD7Q<span class="hljs-regexp">/wDfsUfY7X/</span>n2h<span class="hljs-regexp">/79ipqKAIfsdr/</span>AM+<span class="hljs-number">0</span>P<span class="hljs-regexp">/fsUfY7X/</span>n2h<span class="hljs-regexp">/79ipqKAIfsdr/</span>z7Q<span class="hljs-regexp">/9+xR9jtf+faH/</span>AL9ipqKAIfsdr<span class="hljs-regexp">/z7Q/</span><span class="hljs-number">8</span>AfsUfY7X<span class="hljs-regexp">/AJ9of+/</span>YqaigCH7Ha<span class="hljs-regexp">/8APtD/</span>AN+xR9jtf+faH<span class="hljs-regexp">/v2KmooAh+x2v8Az7Q/</span><span class="hljs-number">9</span>+xR9jtf+faH<span class="hljs-regexp">/v2KmooAh+x2v/</span>PtD<span class="hljs-regexp">/37FH2O1/</span><span class="hljs-number">59</span>of8Av2KmooAh+x2v<span class="hljs-regexp">/PtD/</span>wB+xR9jtf8An2h<span class="hljs-regexp">/79ipqKAIfsdr/</span>wA+<span class="hljs-number">0</span>P8A37FH2O1<span class="hljs-regexp">/59of+/</span>YqaigCH7Ha<span class="hljs-regexp">/wDPtD/</span><span class="hljs-number">37</span>FH2O1<span class="hljs-regexp">/59of+/</span>YqaigCH7Ha<span class="hljs-regexp">/8+0P/</span>fsUfY7X<span class="hljs-regexp">/n2h/</span>wC<span class="hljs-regexp">/YqaigCH7Ha/</span><span class="hljs-number">8</span>+<span class="hljs-number">0</span>P<span class="hljs-regexp">/AH7FH2O1/</span>wCfaH<span class="hljs-regexp">/v2KmooAh+x2v/</span>AD7Q<span class="hljs-regexp">/wDfsUfY7X/</span>n2h<span class="hljs-regexp">/79ipqKAIfsdr/</span>AM+<span class="hljs-number">0</span>P<span class="hljs-regexp">/fsUfY7X/</span>n2h<span class="hljs-regexp">/79ipqKAIfsdr/</span>z7Q<span class="hljs-regexp">/9+xR9jtf+faH/</span>AL9ipqKAIfsdr<span class="hljs-regexp">/z7Q/</span><span class="hljs-number">8</span>AfsUfY7X<span class="hljs-regexp">/AJ9of+/</span>YqaigCH7Ha<span class="hljs-regexp">/8APtD/</span>AN+xR9jtf+faH<span class="hljs-regexp">/v2KmooAh+x2v8Az7Q/</span><span class="hljs-number">9</span>+xR9jtf+faH<span class="hljs-regexp">/v2KmooAh+x2v/</span>PtD<span class="hljs-regexp">/37FH2O1/</span><span class="hljs-number">59</span>of8Av2KmooAh+x2v<span class="hljs-regexp">/PtD/</span>wB+xR9jtf8An2h<span class="hljs-regexp">/79ipqKAIfsdr/</span>wA+<span class="hljs-number">0</span>P8A37FH2O1<span class="hljs-regexp">/59of+/</span>YqaigCH7Ha<span class="hljs-regexp">/wDPtD/</span><span class="hljs-number">37</span>FFTUUAFMnR5Ld0hlMMjKQsgUHafXB4NPpk0qwQPK4dljUsQiF2IHooySfYc0nsCOY8P+JbxNYbw34rWODWEUvbzRjbFfxD+NPRh<span class="hljs-regexp">/EnbqOOkfxP8Rah4W8DXGqaQ0aXUcsaKZE3DDMAeKraNpN94m8W2/i</span><span class="hljs-regexp">/XLWTTorJHi0qwkXbKFYYaWUdmI6L2HXmmfGLT73VPhvdW2m2k95cNPCRFbxNI5AcEnAGae/</span>Lfur<span class="hljs-regexp">/f/</span>luONrvt<span class="hljs-regexp">/wAAy5rX4wQ2rztq/</span>hoqiFyAkmcAZ<span class="hljs-regexp">/55103w316+8TeANP1bVWRrq48zeY12j5ZGUcfQCt69Rn0e4RVLMYGAUDknb0rlvhJY3em/</span>C<span class="hljs-regexp">/SrXUbWa0uI/</span>N3wzxlHXMrkZU8jgg019r5fqT9mLOem1v4g67478Q6V4WvtJt7bSZY1xextkh1yMFVOeh647Vu+H7P4lRa5bv4l1LQ59MG7zo7RXEh+U4xlAPvY79Ki8Gade2vxM8b3VzZ3ENvdTWxgmkiZUlARs7SRhse1d5QtEvRfkOXxNeYZorM8Q6Mdd0eSzju5rGbcskFzAcNFIpyre4z1HcZFcb<span class="hljs-regexp">/wk/</span>jmeU+HB4ceDVseW+tkE2Sr3mXjk45CZ68Hpip8g8z0XOeleVza38Qdd8d+IdK8LX2k29tpMsa4vY2yQ65GCqnPQ9cdq9E0LSE0LRYNPS4mujHuZ5523PK7MWZifUsSa5PwZp17a<span class="hljs-regexp">/EzxvdXNncQ291NbGCaSJlSUBGztJGGx7U0lzP0/</span>VA<span class="hljs-regexp">/hv5ol8P2fxKi1y3fxLqWhz6YN3nR2iuJD8pxjKAfex36V2+aKzPEOjHXdHks47uaxm3LJBcwHDRSKcq3uM9R3GRQ3oFjToznpXnX/</span>CT+OZ5T4cHhx4NWx5b62QTZKveZeOTjkJnrwemK7XQtITQtFg09Lia6Me5nnnbc8rsxZmJ9SxJo8wOS8Q2<span class="hljs-regexp">/xKXVrufRdX8P2ulA5hF4HDouBncdhHXPesnStf8AHWnfEPQdG8T6hpF3aaqk0itp6E5VIyw+YqO+Oma9J1LTrXV9MuNP1GLzrW5Qxyx7iu5T1GQQR+FcNq2gy2nxT8EDS9PuP7M061uITIiM8cC+UVQM/</span>OOwGTk04aSSf9aP<span class="hljs-regexp">/gBLWLZq/</span>E<span class="hljs-regexp">/xFqHhbwNcappDRpdRyxopkTcMMwB4rDFh8YmUEax4Z5GfuSf/</span>AButD4xafe6p8N7q2020nvLhp4SIreJpHIDgk4AzXcJxGufQUktG<span class="hljs-regexp">/P8ARDluvT9TP8PR6zFocCeJprWfUxu86S0BEZ+Y7cZAP3cdutcvrll8TpNauX8P6noMWmlv3CXKuZFGB97CEdc967qih6u4uljy7Ttc8e6T8R9D0PxZe6VcW+prM2LKM5ARCeSVGOcV3niSLXZtFkTwrPaQaluXY94CYwM/</span>NnAJ6e1cx4k069n+MfhC9gs7iS0t4boTTpExjiJjIG5gMDPbNd5T3ivn+bB6S+<span class="hljs-number">48</span>umX4swGVW17wsZYojK0Sh9+<span class="hljs-number">0</span>d8eXXU<span class="hljs-regexp">/DfXr7xN4A0/</span>VtVZGurjzN5jXaPlkZRx9AKv33h7Tv7QvdbitCdVlsWtTMHYlo+oXbnHUDnGaxfhJY3em<span class="hljs-regexp">/C/</span>SrXUbWa0uI<span class="hljs-regexp">/N3wzxlHXMrkZU8jgg0R2fy/</span>X<span class="hljs-regexp">/gBLpb+tDs65DXPEeoWHxO8NaHbtGLLUorhrhSmWJRCVwe3NVNc+ImpaRrVzYQeB9e1COBtq3Vtbs0cnAOVIX3xXOW2r6x4t+LnhnUZfCes6Ta2Edwkst5bOq/</span>NG2Pm2gDnj8aI6yXbX8mD0iz13NFZniHRjrujyWcd3NYzblkguYDhopFOVb3Geo7jIrjf+En8czynw4PDjwatjy31sgmyVe8y8cnHITPXg9MVPkHmei5z0oznpWfoWkJoWiwaelxNdGPczzztueV2YszE+pYk1zOuLrnhHVrnXNEtbjW9NvGDXmlRktLFJgASw9cg4G5fx9cN2TDc7bNGa4zQINb8Taxb+I<span class="hljs-regexp">/EEM+k2lsD/</span>Z+kMSHBKlTLN<span class="hljs-regexp">/tYJAXsD610HiHRjrujyWcd3NYzblkguYDhopFOVb3Geo7jIoeiDRl8XMBuTbiaMzhdxi3jcB6464qTOeleUpceJ5PFEkUfhN7fxQ9t9il8RFnNkIQQfMVfuk9CF654PGRXo2haQmhaLBp6XE10Y9zPPO255XZizMT6liTR0uHkec3fiDx7q3jbxHp3hzUtGs7LR5IwzaghXAdcj5gp9D1x2rd8N23xH/</span>ti1n8QaroN1pJBMgsg+<span class="hljs-number">9</span>wVO0qSgHXB69K469ub7RvHHjSG+<span class="hljs-number">8</span>F61rem600SbrS3kCMqoQfmUd93UHtXWeEPGdzc3mn6DF4G1zR7JI<span class="hljs-regexp">/Kjnu4XEcKoh2gsw/</span><span class="hljs-number">2</span>QOT1NOGyt2X5ahPdmh8T<span class="hljs-regexp">/EWoeFvA1xqmkNGl1HLGimRNwwzAHiufWH4tvceQuveFfO2bzFh9wX1x5ecVqfGLT73VPhvdW2m2k95cNPCRFbxNI5AcEnAGa6eHQNNj1868LbGpvbC2afzG5jyDt2529R1xmlFaNvv+i/</span>Ucunp+ovh6PWYtDgTxNNaz6mN3nSWgIjPzHbjIB+<span class="hljs-number">7</span>jt1rl9csvidJrVy<span class="hljs-regexp">/h/</span>U9Bi00t+<span class="hljs-number">4</span>S5VzIowPvYQjrnvXdVwuufETUtI1q5sIPA+vahHA21bq2t2aOTgHKkL74obuxdDI07XPHuk<span class="hljs-regexp">/EfQ9D8WXulXFvqazNiyjOQEQnklRjnFeo15FbavrHi34ueGdRl8J6zpNrYR3CSy3ls6r80bY+baAOePxr12q+yvn+bE/i</span>08goooqRhRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQBD9kj<span class="hljs-regexp">/vTf9/</span>n<span class="hljs-regexp">/wAaPskf96b/</span>AL<span class="hljs-regexp">/P/</span>jRRQAfZI<span class="hljs-regexp">/703/</span>f5<span class="hljs-regexp">/wDGj7JH/</span>em<span class="hljs-regexp">/7/</span>P<span class="hljs-regexp">/AI0UUAH2SP8AvTf9/</span>n<span class="hljs-regexp">/xo+yR/</span>wB6b<span class="hljs-regexp">/v8/</span>wDjRRQAfZI<span class="hljs-regexp">/703/</span>AH+f<span class="hljs-regexp">/Gj7JH/</span>em<span class="hljs-regexp">/7/</span>AD<span class="hljs-regexp">/40UUAH2SP+9N/</span><span class="hljs-number">3</span>+f<span class="hljs-regexp">/ABo+yR/</span><span class="hljs-number">3</span>pv8Av8<span class="hljs-regexp">/+NFFAB9kj/</span>vTf9<span class="hljs-regexp">/n/</span>AMaPskf96b<span class="hljs-regexp">/v8/</span><span class="hljs-number">8</span>AjRRQAfZI<span class="hljs-regexp">/wC9N/</span><span class="hljs-number">3</span>+f<span class="hljs-regexp">/Gj7JH/</span>AHpv+<span class="hljs-regexp">/z/</span>AONFFAB9kj<span class="hljs-regexp">/vTf8Af5/</span><span class="hljs-number">8</span>aPskf96b<span class="hljs-regexp">/v8AP/</span>jRRQAfZI<span class="hljs-regexp">/703/</span>f5<span class="hljs-regexp">/8AGj7JH/</span>em<span class="hljs-regexp">/wC/</span>z<span class="hljs-regexp">/40UUAH2SP+9N/</span><span class="hljs-number">3</span>+f8Axo+yR<span class="hljs-regexp">/3pv+/</span>z<span class="hljs-regexp">/wCNFFAB9kj/</span>AL03<span class="hljs-regexp">/f5/</span><span class="hljs-number">8</span>aPskf8Aem<span class="hljs-regexp">/7/</span>P8A40UUAH2SP+<span class="hljs-number">9</span>N<span class="hljs-regexp">/wB/</span>n<span class="hljs-regexp">/xo+yR/</span><span class="hljs-number">3</span>pv+<span class="hljs-regexp">/wA/</span>+NFFAB9kj<span class="hljs-regexp">/vTf9/</span>n<span class="hljs-regexp">/wAaPskf96b/</span>AL<span class="hljs-regexp">/P/</span>jRRQAfZI<span class="hljs-regexp">/703/</span>f5<span class="hljs-regexp">/wDGj7JH/</span>em<span class="hljs-regexp">/7/</span>P<span class="hljs-regexp">/AI0UUAH2SP8AvTf9/</span>n<span class="hljs-regexp">/xo+yR/</span>wB6b<span class="hljs-regexp">/v8/</span>wDjRRQAfZI<span class="hljs-regexp">/703/</span>AH+f<span class="hljs-regexp">/Gj7JH/</span>em<span class="hljs-regexp">/7/</span>AD<span class="hljs-regexp">/40UUAH2SP+9N/</span><span class="hljs-number">3</span>+f<span class="hljs-regexp">/ABo+yR/</span><span class="hljs-number">3</span>pv8Av8<span class="hljs-regexp">/+NFFAB9kj/</span>vTf9<span class="hljs-regexp">/n/</span>AMaPskf96b<span class="hljs-regexp">/v8/</span><span class="hljs-number">8</span>AjRRQAfZI<span class="hljs-regexp">/wC9N/</span><span class="hljs-number">3</span>+f<span class="hljs-regexp">/Gj7JH/</span>AHpv+<span class="hljs-regexp">/z/</span>AONFFAB9kj<span class="hljs-regexp">/vTf8Af5/</span><span class="hljs-number">8</span>aPskf96b<span class="hljs-regexp">/v8AP/</span>jRRQAfZI<span class="hljs-regexp">/703/</span>f5<span class="hljs-regexp">/8AGj7JH/</span>em<span class="hljs-regexp">/wC/</span>z<span class="hljs-regexp">/40UUAH2SP+9N/</span><span class="hljs-number">3</span>+f8Axo+yR<span class="hljs-regexp">/3pv+/</span>z<span class="hljs-regexp">/wCNFFAB9kj/</span>AL03<span class="hljs-regexp">/f5/</span><span class="hljs-number">8</span>aPskf8Aem<span class="hljs-regexp">/7/</span>P8A40UUAH2SP+<span class="hljs-number">9</span>N<span class="hljs-regexp">/wB/</span>n<span class="hljs-regexp">/xooooA/</span><span class="hljs-number">9</span>k=<br></code></pre></td></tr></table></figure>
 
 <p>一堆牛马乱码，没见过，看别人wp知道是base64转图片，还要加图片头data:image/jpg;base64</p>
 <p>之后对照表就行了</p>
-<h1 id="你喜欢下棋吗"><a href="#你喜欢下棋吗" class="headerlink" title="你喜欢下棋吗"></a>你喜欢下棋吗</h1><p><img src="https://img-blog.csdnimg.cn/2021011716212098.png" alt="波利比奥斯方阵密码（棋盘"></p>
+<h1 id="你喜欢下棋吗"><a href="#你喜欢下棋吗" class="headerlink" title="你喜欢下棋吗"></a>你喜欢下棋吗</h1><p><img src="https://img-blog.csdnimg.cn/2021011716212098.png" srcset="/img/loading.gif" lazyload alt="波利比奥斯方阵密码（棋盘"></p>
 <p> <strong>4423244324433534315412244543</strong>先横后竖转换得到”thisispolybius”</p>
 <p>打开是这个</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">一种5bit的编码</span><br><span class="line">bugku里面的内容为小写</span><br><span class="line">bugku&#123;11111 11001 00011 00111 01001 11011 10110 11111 10000 01110 11011 10110 11111 01001 00001&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs dns">一种<span class="hljs-number">5</span>bit的编码<br>bugku里面的内容为小写<br>bugku&#123;<span class="hljs-number">11111 11001</span> <span class="hljs-number">00011 00111</span> <span class="hljs-number">01001 11011</span> <span class="hljs-number">10110 11111</span> <span class="hljs-number">10000 01110</span> <span class="hljs-number">11011 10110</span> <span class="hljs-number">11111 01001</span> <span class="hljs-number">00001</span>&#125;<br><br></code></pre></td></tr></table></figure>
 
 <p>Baudot Code</p>
 <p><a target="_blank" rel="noopener" href="https://www.boxentriq.com/code-breaking/baudot-code%E8%A7%A3%E7%A0%81%E5%8D%B3%E5%8F%AF">https://www.boxentriq.com/code-breaking/baudot-code解码即可</a></p>
 <h1 id="小山丘的秘密"><a href="#小山丘的秘密" class="headerlink" title="小山丘的秘密"></a>小山丘的秘密</h1><p>给了一个图片</p>
-<p><img src="/2021/10/14/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%88%B7%E9%A2%98/image-20211015095600891.png" alt="棋盘"></p>
+<p><img src="/2021/10/14/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%88%B7%E9%A2%98/image-20211015095600891.png" srcset="/img/loading.gif" lazyload alt="棋盘"></p>
 <p>还有一段话</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bugku&#123;PLGTGBQHM&#125;</span><br><span class="line"></span><br><span class="line">其中A=1，flag全为小写bugku&#123;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs dust"><span class="xml">bugku</span><span class="hljs-template-variable">&#123;PLGTGBQHM&#125;</span><span class="xml"></span><br><span class="xml"></span><br><span class="xml">其中A=1，flag全为小写bugku</span><span class="hljs-template-variable">&#123;&#125;</span><br></code></pre></td></tr></table></figure>
 
 <p>hill（希尔密码）</p>
-<p><img src="/2021/10/14/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%88%B7%E9%A2%98/image-20211015100055646.png" alt="解密网站"></p>
+<p><img src="/2021/10/14/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%88%B7%E9%A2%98/image-20211015100055646.png" srcset="/img/loading.gif" lazyload alt="解密网站"></p>
 <p>需要三个参数，首先A=1就是提示字母表排列 一般从0开始 所以z就是0</p>
 <p>第二个也就是加密的内容 </p>
 <p>第三个参数从棋盘上看 第一个也就是a 以此类推</p>
 <p>就解除了答案</p>
 <p>bugku{whatahill}</p>
 <h1 id="EN-气泡"><a href="#EN-气泡" class="headerlink" title="EN-气泡"></a>EN-气泡</h1><p>上脚本就行</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bubblepy <span class="keyword">import</span> BubbleBabble</span><br><span class="line"><span class="comment">#导入包bubblepy</span></span><br><span class="line"><span class="built_in">str</span>=<span class="string">&#x27;xivak-notuk-cupad-tarek-zesuk-zupid-taryk-zesak-cined-tetuk-nasuk-zoryd-tirak-zysek-zaryd-tyrik-nisyk-nenad-tituk-nysil-hepyd-tovak-zutik-cepyd-toral-husol-henud-titak-hesak-nyrud-tarik-netak-zapad-tupek-hysek-zuned-tytyk-zisuk-hyped-tymik-hysel-hepad-tomak-zysil-nunad-tytak-nirik-copud-tevok-zasyk-nypud-tyruk-niryk-henyd-tityk-zyral-nyred-taryk-zesek-corid-tipek-zysek-nunad-tytal-hitul-hepod-tovik-zurek-hupyd-tavil-hesuk-zined-tetuk-zatel-hopod-tevul-haruk-cupod-tavuk-zesol-ninid-tetok-nasyl-hopid-teryl-nusol-heped-tovuk-hasil-nenod-titek-zyryl-hiped-tivyk-cosok-zorud-tirel-hyrel-hinid-tetok-hirek-zyped-tyrel-hitul-nyrad-tarak-hotok-cuvux&#x27;</span></span><br><span class="line"><span class="comment">#str是待解密字符</span></span><br><span class="line">Str=BubbleBabble()</span><br><span class="line"><span class="built_in">print</span>(Str.decode(<span class="built_in">str</span>))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> bubblepy <span class="hljs-keyword">import</span> BubbleBabble<br><span class="hljs-comment">#导入包bubblepy</span><br><span class="hljs-built_in">str</span>=<span class="hljs-string">&#x27;xivak-notuk-cupad-tarek-zesuk-zupid-taryk-zesak-cined-tetuk-nasuk-zoryd-tirak-zysek-zaryd-tyrik-nisyk-nenad-tituk-nysil-hepyd-tovak-zutik-cepyd-toral-husol-henud-titak-hesak-nyrud-tarik-netak-zapad-tupek-hysek-zuned-tytyk-zisuk-hyped-tymik-hysel-hepad-tomak-zysil-nunad-tytak-nirik-copud-tevok-zasyk-nypud-tyruk-niryk-henyd-tityk-zyral-nyred-taryk-zesek-corid-tipek-zysek-nunad-tytal-hitul-hepod-tovik-zurek-hupyd-tavil-hesuk-zined-tetuk-zatel-hopod-tevul-haruk-cupod-tavuk-zesol-ninid-tetok-nasyl-hopid-teryl-nusol-heped-tovuk-hasil-nenod-titek-zyryl-hiped-tivyk-cosok-zorud-tirel-hyrel-hinid-tetok-hirek-zyped-tyrel-hitul-nyrad-tarak-hotok-cuvux&#x27;</span><br><span class="hljs-comment">#str是待解密字符</span><br>Str=BubbleBabble()<br><span class="hljs-built_in">print</span>(Str.decode(<span class="hljs-built_in">str</span>))<br><br></code></pre></td></tr></table></figure>
 
 <p>多次套娃</p>
 <h1 id="你以为是md5吗"><a href="#你以为是md5吗" class="headerlink" title="你以为是md5吗"></a>你以为是md5吗</h1><p>bci177a7a9c7udf69c248647b4dfc6fd84o</p>
@@ -65,60 +308,208 @@
 <p>删去i o u  再去解密 就可以了 </p>
 <p>bc177a7a9c7df69c248647b4dfc6fd84</p>
 <p>flag{666666666666}</p>
-<h1 id="Math-amp-English"><a href="#Math-amp-English" class="headerlink" title="Math&amp;English"></a>Math&amp;English</h1><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">11</span>×<span class="number">3</span><span class="operator">=</span></span><br><span class="line"><span class="variable">sin</span><span class="punctuation">(</span>Π<span class="operator">/</span><span class="number">6</span><span class="punctuation">)</span><span class="operator">+</span><span class="variable">sin</span><span class="punctuation">(</span>Π<span class="operator">/</span><span class="number">6</span><span class="punctuation">)</span><span class="operator">=</span>                  </span><br><span class="line"><span class="number">2</span>×<span class="number">11</span><span class="operator">=</span></span><br><span class="line"><span class="number">3</span>×<span class="variable">cos</span><span class="punctuation">(</span><span class="number">2</span>Π<span class="punctuation">)</span><span class="operator">=</span></span><br><span class="line"><span class="number">22</span>×<span class="number">2</span><span class="operator">=</span></span><br><span class="line"><span class="number">6</span>×<span class="number">9</span><span class="operator">=</span></span><br><span class="line"><span class="number">2.5</span>×<span class="number">2</span><span class="operator">=</span></span><br><span class="line"><span class="variable">tan</span><span class="punctuation">(</span>Π<span class="punctuation">)</span> <span class="operator">+</span> <span class="number">1</span> <span class="operator">=</span> </span><br><span class="line"><span class="number">5</span>×<span class="number">7</span><span class="operator">=</span></span><br><span class="line"><span class="number">7</span>×<span class="number">9</span><span class="operator">-</span><span class="number">9</span><span class="operator">=</span></span><br><span class="line"><span class="variable">ln</span><span class="punctuation">(</span><span class="variable">e</span><span class="punctuation">)</span> <span class="operator">+</span> <span class="number">2</span> <span class="operator">=</span></span><br><span class="line"><span class="punctuation">(</span><span class="number">6</span>×<span class="number">6</span><span class="punctuation">)</span><span class="operator">-</span><span class="number">1</span><span class="operator">=</span></span><br><span class="line"><span class="number">4</span>×<span class="number">10</span> <span class="operator">+</span> <span class="variable">cos</span><span class="punctuation">(</span><span class="number">0</span><span class="punctuation">)</span> <span class="operator">=</span></span><br><span class="line"><span class="number">26</span>×<span class="number">2</span> <span class="operator">=</span></span><br><span class="line"><span class="variable">ln</span><span class="punctuation">(</span><span class="variable">e</span><span class="punctuation">)</span> × <span class="number">10</span> <span class="operator">+</span><span class="number">3</span> <span class="operator">=</span></span><br></pre></td></tr></table></figure>
+<h1 id="Math-amp-English"><a href="#Math-amp-English" class="headerlink" title="Math&amp;English"></a>Math&amp;English</h1><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs mathematica"><span class="hljs-number">11</span>×<span class="hljs-number">3</span><span class="hljs-operator">=</span><br><span class="hljs-variable">sin</span><span class="hljs-punctuation">(</span>Π<span class="hljs-operator">/</span><span class="hljs-number">6</span><span class="hljs-punctuation">)</span><span class="hljs-operator">+</span><span class="hljs-variable">sin</span><span class="hljs-punctuation">(</span>Π<span class="hljs-operator">/</span><span class="hljs-number">6</span><span class="hljs-punctuation">)</span><span class="hljs-operator">=</span>                  <br><span class="hljs-number">2</span>×<span class="hljs-number">11</span><span class="hljs-operator">=</span><br><span class="hljs-number">3</span>×<span class="hljs-variable">cos</span><span class="hljs-punctuation">(</span><span class="hljs-number">2</span>Π<span class="hljs-punctuation">)</span><span class="hljs-operator">=</span><br><span class="hljs-number">22</span>×<span class="hljs-number">2</span><span class="hljs-operator">=</span><br><span class="hljs-number">6</span>×<span class="hljs-number">9</span><span class="hljs-operator">=</span><br><span class="hljs-number">2.5</span>×<span class="hljs-number">2</span><span class="hljs-operator">=</span><br><span class="hljs-variable">tan</span><span class="hljs-punctuation">(</span>Π<span class="hljs-punctuation">)</span> <span class="hljs-operator">+</span> <span class="hljs-number">1</span> <span class="hljs-operator">=</span> <br><span class="hljs-number">5</span>×<span class="hljs-number">7</span><span class="hljs-operator">=</span><br><span class="hljs-number">7</span>×<span class="hljs-number">9</span><span class="hljs-operator">-</span><span class="hljs-number">9</span><span class="hljs-operator">=</span><br><span class="hljs-variable">ln</span><span class="hljs-punctuation">(</span><span class="hljs-variable">e</span><span class="hljs-punctuation">)</span> <span class="hljs-operator">+</span> <span class="hljs-number">2</span> <span class="hljs-operator">=</span><br><span class="hljs-punctuation">(</span><span class="hljs-number">6</span>×<span class="hljs-number">6</span><span class="hljs-punctuation">)</span><span class="hljs-operator">-</span><span class="hljs-number">1</span><span class="hljs-operator">=</span><br><span class="hljs-number">4</span>×<span class="hljs-number">10</span> <span class="hljs-operator">+</span> <span class="hljs-variable">cos</span><span class="hljs-punctuation">(</span><span class="hljs-number">0</span><span class="hljs-punctuation">)</span> <span class="hljs-operator">=</span><br><span class="hljs-number">26</span>×<span class="hljs-number">2</span> <span class="hljs-operator">=</span><br><span class="hljs-variable">ln</span><span class="hljs-punctuation">(</span><span class="hljs-variable">e</span><span class="hljs-punctuation">)</span> × <span class="hljs-number">10</span> <span class="hljs-operator">+</span><span class="hljs-number">3</span> <span class="hljs-operator">=</span><br></code></pre></td></tr></table></figure>
 
 <p>通过计算 得到了</p>
 <p>21 33 1 22 3 44 54 5 1 35 54 3 35 41 52 13</p>
 <p>为元音密码</p>
-<p><img src="https://img-blog.csdnimg.cn/1ec2d1c05be842d88acf36f9cb5b4e62.png" alt="元音密码对照表"></p>
+<p><img src="https://img-blog.csdnimg.cn/1ec2d1c05be842d88acf36f9cb5b4e62.png" srcset="/img/loading.gif" lazyload alt="元音密码对照表"></p>
 <p>对照即可解出密码</p>
 <h1 id="easy-crypto"><a href="#easy-crypto" class="headerlink" title="easy_crypto"></a>easy_crypto</h1><p>0010 0100 01 110 1111011 11 11111 010 000 0 001101 1010 111 100 0 001101 01111 000 001101 00 10 1 0 010 0 000 1 01111 10 11110 101011 1111101 </p>
 <p>猜想是摩斯密码 转换后</p>
 <p>..-. .-.. .- –. —-.– – —– .-. … . ..–.- -.-. — -.. . ..–.- .—- … ..–.- .. -. - . .-. . … - .—- -. —-. -.-.– —–.-</p>
 <p><a target="_blank" rel="noopener" href="http://www.hiencode.com/morse.html">http://www.hiencode.com/morse.html</a></p>
 <p>解密即可</p>
-</div><div class="article-licensing box"><div class="licensing-title"><p>密码学刷题</p><p><a href="http://example.com/2021/10/14/密码学刷题/">http://example.com/2021/10/14/密码学刷题/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>Air</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2021-10-14</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2021-10-15</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="notification is-danger">You need to set <code>install_url</code> to use ShareThis. Please set it in <code>_config.yml</code>.</div></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">Like this article? Support the author with</h3><div class="buttons is-centered"><a class="button donate" href="/" target="_blank" rel="noopener" data-type="afdian"><span class="icon is-small"><i class="fas fa-charging-station"></i></span><span>Afdian.net</span></a><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>Alipay</span><span class="qrcode"><img src="/" alt="Alipay"></span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>Buy me a coffee</span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="patreon"><span class="icon is-small"><i class="fab fa-patreon"></i></span><span>Patreon</span></a><div class="notification is-danger">You forgot to set the <code>business</code> or <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.</div><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>Wechat</span><span class="qrcode"><img src="/" alt="Wechat"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2021/10/22/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%8C%96Laravel%E9%93%BE%E5%AD%90/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">手把手挖Laravel链子</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2021/10/12/GXYCTF2019StrongestMind/"><span class="level-item">GXYCTF2019StrongestMind</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">Comments</h3><div class="notification is-danger">You forgot to set the <code>shortname</code> for Disqus. Please set it in <code>_config.yml</code>.</div></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/1.png" alt="Air"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Air</p><p class="is-size-6 is-block">吾善养吾浩然气</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>中国 海口</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">11</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">0</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">0</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/airkqx" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/airkqx"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><!--!--><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-01-02T13:50:00.000Z">2022-01-02</time></p><p class="title"><a href="/2022/01/02/%E7%BB%992021%E6%9D%A5%E6%AE%B5%E6%80%BB%E7%BB%93/">给2021来段总结</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-12-09T11:41:29.000Z">2021-12-09</time></p><p class="title"><a href="/2021/12/09/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%9C%80%E5%85%A8%E9%9D%A2%E7%9A%84%E6%80%BB%E7%BB%93/">PHP命令执行最全面的总结</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-10-31T12:14:14.000Z">2021-10-31</time></p><p class="title"><a href="/2021/10/31/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%90%AD%E4%B8%80%E4%B8%AA%E9%9D%B6%E5%9C%BA%E5%B9%B6%E5%87%BA%E9%A2%98/">手把手搭一个靶场并出题</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-10-30T08:08:40.000Z">2021-10-30</time></p><p class="title"><a href="/2021/10/30/life/">Life</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-10-27T12:40:38.000Z">2021-10-27</time></p><p class="title"><a href="/2021/10/27/hero/">hero</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2022/01/"><span class="level-start"><span class="level-item">January 2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/12/"><span class="level-start"><span class="level-item">December 2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/10/"><span class="level-start"><span class="level-item">October 2021</span></span><span class="level-end"><span class="level-item tag">8</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/08/"><span class="level-start"><span class="level-item">August 2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><!--!--><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">Subscribe for updates</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div><div class="card widget"><div class="card-content"><div class="notification is-danger">You need to set <code>client_id</code> and <code>slot_id</code> to show this AD unit. Please set it in <code>_config.yml</code>.</div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">follow.it</h3><form action="" method="post" target="_blank"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Air" height="28"></a><p class="is-size-7"><span>&copy; 2022 Air</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
-            article: {
-                highlight: {
-                    clipboard: true,
-                    fold: 'unfolded'
-                }
-            }
-        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
-      window.cookieconsent.initialise({
-        type: "info",
-        theme: "edgeless",
-        static: false,
-        position: "bottom-left",
-        content: {
-          message: "This website uses cookies to improve your experience.",
-          dismiss: "Got it!",
-          allow: "Allow cookies",
-          deny: "Decline",
-          link: "Learn more",
-          policy: "Cookie Policy",
-          href: "https://www.cookiesandyou.com/",
-        },
-        palette: {
-          popup: {
-            background: "#edeff5",
-            text: "#838391"
-          },
-          button: {
-            background: "#4b81e8"
-          },
-        },
-      });
-    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
-            if (typeof $.fn.lightGallery === 'function') {
-                $('.article').lightGallery({ selector: '.gallery-item' });
-            }
-            if (typeof $.fn.justifiedGallery === 'function') {
-                if ($('.justified-gallery > p > .gallery-item').length) {
-                    $('.justified-gallery > p > .gallery-item').unwrap();
-                }
-                $('.justified-gallery').justifiedGallery();
-            }
-        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
-            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
-        });</script></body></html>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/10/27/Hero/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Hero</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/10/12/GXYCTF2019StrongestMind/">
+                        <span class="hidden-mobile">GXYCTF2019StrongestMind</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

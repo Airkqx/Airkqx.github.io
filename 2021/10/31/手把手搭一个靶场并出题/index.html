@@ -1,90 +1,481 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>手把手搭一个靶场并出题 - Air</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Air&#039;s blog"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Air&#039;s blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="心血来潮搭建了一个靶场并出了人生中第一道CTF题，感觉挺有成就感，就写下这篇文章记录一下  Step1 初始化docker环境去购买一个云服务器(阿里云、腾讯云、华为云都可)，设置系统为Ubuntu20.04(我自己是这种版本，其他版本用我这种方法可能会报错) 123cd &amp;#x2F;rootvi init.sh  然后在init里面写入以下内容 1234567891011121314151617#!&amp;#x2F;b"><meta property="og:type" content="blog"><meta property="og:title" content="手把手搭一个靶场并出题"><meta property="og:url" content="http://example.com/2021/10/31/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%90%AD%E4%B8%80%E4%B8%AA%E9%9D%B6%E5%9C%BA%E5%B9%B6%E5%87%BA%E9%A2%98/"><meta property="og:site_name" content="Air"><meta property="og:description" content="心血来潮搭建了一个靶场并出了人生中第一道CTF题，感觉挺有成就感，就写下这篇文章记录一下  Step1 初始化docker环境去购买一个云服务器(阿里云、腾讯云、华为云都可)，设置系统为Ubuntu20.04(我自己是这种版本，其他版本用我这种方法可能会报错) 123cd &amp;#x2F;rootvi init.sh  然后在init里面写入以下内容 1234567891011121314151617#!&amp;#x2F;b"><meta property="og:locale" content="en_US"><meta property="og:image" content="http://example.com/2021/10/31/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%90%AD%E4%B8%80%E4%B8%AA%E9%9D%B6%E5%9C%BA%E5%B9%B6%E5%87%BA%E9%A2%98/image-20211031203539148.png"><meta property="og:image" content="http://example.com/2021/10/31/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%90%AD%E4%B8%80%E4%B8%AA%E9%9D%B6%E5%9C%BA%E5%B9%B6%E5%87%BA%E9%A2%98/image-20211031203901602.png"><meta property="og:image" content="http://example.com/2021/10/31/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%90%AD%E4%B8%80%E4%B8%AA%E9%9D%B6%E5%9C%BA%E5%B9%B6%E5%87%BA%E9%A2%98/image-20211031204430496.png"><meta property="og:image" content="http://example.com/2021/10/31/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%90%AD%E4%B8%80%E4%B8%AA%E9%9D%B6%E5%9C%BA%E5%B9%B6%E5%87%BA%E9%A2%98/image-20211101113904514.png"><meta property="article:published_time" content="2021-10-31T12:14:14.000Z"><meta property="article:modified_time" content="2021-11-01T03:43:01.764Z"><meta property="article:author" content="Air"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/2021/10/31/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%90%AD%E4%B8%80%E4%B8%AA%E9%9D%B6%E5%9C%BA%E5%B9%B6%E5%87%BA%E9%A2%98/image-20211031203539148.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2021/10/31/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%90%AD%E4%B8%80%E4%B8%AA%E9%9D%B6%E5%9C%BA%E5%B9%B6%E5%87%BA%E9%A2%98/"},"headline":"手把手搭一个靶场并出题","image":["http://example.com/2021/10/31/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%90%AD%E4%B8%80%E4%B8%AA%E9%9D%B6%E5%9C%BA%E5%B9%B6%E5%87%BA%E9%A2%98/image-20211031203539148.png","http://example.com/2021/10/31/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%90%AD%E4%B8%80%E4%B8%AA%E9%9D%B6%E5%9C%BA%E5%B9%B6%E5%87%BA%E9%A2%98/image-20211031203901602.png","http://example.com/2021/10/31/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%90%AD%E4%B8%80%E4%B8%AA%E9%9D%B6%E5%9C%BA%E5%B9%B6%E5%87%BA%E9%A2%98/image-20211031204430496.png","http://example.com/2021/10/31/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%90%AD%E4%B8%80%E4%B8%AA%E9%9D%B6%E5%9C%BA%E5%B9%B6%E5%87%BA%E9%A2%98/image-20211101113904514.png"],"datePublished":"2021-10-31T12:14:14.000Z","dateModified":"2021-11-01T03:43:01.764Z","author":{"@type":"Person","name":"Air"},"publisher":{"@type":"Organization","name":"Air","logo":{"@type":"ImageObject","url":"http://example.com/img/logo.svg"}},"description":"心血来潮搭建了一个靶场并出了人生中第一道CTF题，感觉挺有成就感，就写下这篇文章记录一下  Step1 初始化docker环境去购买一个云服务器(阿里云、腾讯云、华为云都可)，设置系统为Ubuntu20.04(我自己是这种版本，其他版本用我这种方法可能会报错) 123cd &#x2F;rootvi init.sh  然后在init里面写入以下内容 1234567891011121314151617#!&#x2F;b"}</script><link rel="canonical" href="http://example.com/2021/10/31/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%90%AD%E4%B8%80%E4%B8%AA%E9%9D%B6%E5%9C%BA%E5%B9%B6%E5%87%BA%E9%A2%98/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Air" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2021-10-31T12:14:14.000Z" title="2021/10/31 下午8:14:14">2021-10-31</time></span><span class="level-item">Updated&nbsp;<time dateTime="2021-11-01T03:43:01.764Z" title="2021/11/1 上午11:43:01">2021-11-01</time></span><span class="level-item">5 minutes read (About 682 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">手把手搭一个靶场并出题</h1><div class="content"><blockquote>
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Air">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="心血来潮搭建了一个靶场并出了人生中第一道CTF题，感觉挺有成就感，就写下这篇文章记录一下  Step1 初始化docker环境去购买一个云服务器(阿里云、腾讯云、华为云都可)，设置系统为Ubuntu20.04(我自己是这种版本，其他版本用我这种方法可能会报错) 123cd &#x2F;rootvi init.sh  然后在init里面写入以下内容 1234567891011121314151617#!&#x2F;b">
+<meta property="og:type" content="article">
+<meta property="og:title" content="手把手搭一个靶场并出题">
+<meta property="og:url" content="http://example.com/2021/10/31/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%90%AD%E4%B8%80%E4%B8%AA%E9%9D%B6%E5%9C%BA%E5%B9%B6%E5%87%BA%E9%A2%98/index.html">
+<meta property="og:site_name" content="Air">
+<meta property="og:description" content="心血来潮搭建了一个靶场并出了人生中第一道CTF题，感觉挺有成就感，就写下这篇文章记录一下  Step1 初始化docker环境去购买一个云服务器(阿里云、腾讯云、华为云都可)，设置系统为Ubuntu20.04(我自己是这种版本，其他版本用我这种方法可能会报错) 123cd &#x2F;rootvi init.sh  然后在init里面写入以下内容 1234567891011121314151617#!&#x2F;b">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2021/10/31/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%90%AD%E4%B8%80%E4%B8%AA%E9%9D%B6%E5%9C%BA%E5%B9%B6%E5%87%BA%E9%A2%98/image-20211031203539148.png">
+<meta property="og:image" content="http://example.com/2021/10/31/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%90%AD%E4%B8%80%E4%B8%AA%E9%9D%B6%E5%9C%BA%E5%B9%B6%E5%87%BA%E9%A2%98/image-20211031203901602.png">
+<meta property="og:image" content="http://example.com/2021/10/31/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%90%AD%E4%B8%80%E4%B8%AA%E9%9D%B6%E5%9C%BA%E5%B9%B6%E5%87%BA%E9%A2%98/image-20211031204430496.png">
+<meta property="og:image" content="http://example.com/2021/10/31/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%90%AD%E4%B8%80%E4%B8%AA%E9%9D%B6%E5%9C%BA%E5%B9%B6%E5%87%BA%E9%A2%98/image-20211101113904514.png">
+<meta property="article:published_time" content="2021-10-31T12:14:14.000Z">
+<meta property="article:modified_time" content="2021-11-01T03:43:01.764Z">
+<meta property="article:author" content="Air">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2021/10/31/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%90%AD%E4%B8%80%E4%B8%AA%E9%9D%B6%E5%9C%BA%E5%B9%B6%E5%87%BA%E9%A2%98/image-20211031203539148.png">
+  
+  
+  <title>手把手搭一个靶场并出题 - Air</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="手把手搭一个靶场并出题">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-10-31 20:14" pubdate>
+        2021年10月31日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.5k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      13 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">手把手搭一个靶场并出题</h1>
+            
+            <div class="markdown-body">
+              <blockquote>
 <p>心血来潮搭建了一个靶场并出了人生中第一道CTF题，感觉挺有成就感，就写下这篇文章记录一下</p>
 </blockquote>
 <h1 id="Step1-初始化docker环境"><a href="#Step1-初始化docker环境" class="headerlink" title="Step1 初始化docker环境"></a>Step1 初始化docker环境</h1><p>去购买一个云服务器(阿里云、腾讯云、华为云都可)，设置系统为Ubuntu20.04(我自己是这种版本，其他版本用我这种方法可能会报错)</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /root</span><br><span class="line"></span><br><span class="line">vi init.sh</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><pre><code class="hljs shell">cd /root<br><br>vi init.sh<br></code></pre></td></tr></table></figure>
 
 <p>然后在init里面写入以下内容</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"><span class="meta">#</span><span class="bash">更新系统</span></span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get upgrade</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">安装 docker和docker-compose</span></span><br><span class="line">sudo apt install docker docker-compose zip</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">设置镜像加速器</span></span><br><span class="line">sudo mkdir -p /etc/docker</span><br><span class="line">sudo tee /etc/docker/daemon.json &lt;&lt;-&#x27;EOF&#x27;</span><br><span class="line">&#123;</span><br><span class="line">  &quot;registry-mirrors&quot;: [&quot;https://faalpdo3.mirror.aliyuncs.com&quot;]</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">!/bin/bash</span><br><span class="hljs-meta">#</span><span class="bash">更新系统</span><br>sudo apt-get update<br>sudo apt-get upgrade<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">安装 docker和docker-compose</span><br>sudo apt install docker docker-compose zip<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">设置镜像加速器</span><br>sudo mkdir -p /etc/docker<br>sudo tee /etc/docker/daemon.json &lt;&lt;-&#x27;EOF&#x27;<br>&#123;<br>  &quot;registry-mirrors&quot;: [&quot;https://faalpdo3.mirror.aliyuncs.com&quot;]<br>&#125;<br>EOF<br>sudo systemctl daemon-reload<br>sudo systemctl restart docker<br></code></pre></td></tr></table></figure>
 
 <p>然后</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">chmod +x init.sh</span><br><span class="line"></span><br><span class="line">./init.sh</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">chmod +x init.sh<br><br>./init.sh<br><br></code></pre></td></tr></table></figure>
 
 <p>遇到问句就 y</p>
 <h1 id="step2-搭建CTFd"><a href="#step2-搭建CTFd" class="headerlink" title="step2 搭建CTFd"></a>step2 搭建CTFd</h1><h2 id="1-拉取CTFd"><a href="#1-拉取CTFd" class="headerlink" title="1.拉取CTFd"></a>1.拉取CTFd</h2><p>在服务器面板里开放端口(我这里以8000为例)</p>
-<p><img src="/2021/10/31/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%90%AD%E4%B8%80%E4%B8%AA%E9%9D%B6%E5%9C%BA%E5%B9%B6%E5%87%BA%E9%A2%98/image-20211031203539148.png" alt="image-20211031203539148"></p>
+<p><img src="/2021/10/31/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%90%AD%E4%B8%80%E4%B8%AA%E9%9D%B6%E5%9C%BA%E5%B9%B6%E5%87%BA%E9%A2%98/image-20211031203539148.png" srcset="/img/loading.gif" lazyload alt="image-20211031203539148"></p>
 <p>直接利用docker拉取镜像</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 8000:8000 -d ctfd/ctfd</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker run -p 8000:8000 -d ctfd/ctfd<br></code></pre></td></tr></table></figure>
 
 <p>然后去访问url+端口号</p>
 <p>会有初始化的界面，去设置一下管理员员账号密码等一些配置信息即可</p>
-<h2 id="2-汉化ctfd"><a href="#2-汉化ctfd" class="headerlink" title="2.汉化ctfd"></a>2.汉化ctfd</h2><p><img src="/2021/10/31/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%90%AD%E4%B8%80%E4%B8%AA%E9%9D%B6%E5%9C%BA%E5%B9%B6%E5%87%BA%E9%A2%98/image-20211031203901602.png" alt="image-20211031203901602"></p>
+<h2 id="2-汉化ctfd"><a href="#2-汉化ctfd" class="headerlink" title="2.汉化ctfd"></a>2.汉化ctfd</h2><p><img src="/2021/10/31/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%90%AD%E4%B8%80%E4%B8%AA%E9%9D%B6%E5%9C%BA%E5%B9%B6%E5%87%BA%E9%A2%98/image-20211031203901602.png" srcset="/img/loading.gif" lazyload alt="image-20211031203901602"></p>
 <p>首先利用docker ps去查看id，然后利用id进入docker容器里面</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it de6fe1167985 /bin/bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker exec -it de6fe1167985 /bin/bash<br></code></pre></td></tr></table></figure>
 
 <p>先去下载汉化包，直接用git命令去拉取</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/Gu-f/CTFd_chinese_CN.git</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">git clone https://github.com/Gu-f/CTFd_chinese_CN.git<br><br></code></pre></td></tr></table></figure>
 
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">切换到CTFd目录 删除主题</span><br><span class="line">rm -rf themes</span><br><span class="line"></span><br><span class="line">然后把下载好的主题以及对应的版本cp过来</span><br><span class="line">cp /opt/CTFd/CTFd_chinese_CN/V3.1.1/CTFd-3.1.1/CTFd/themes .</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">切换到CTFd目录 删除主题<br>rm -rf themes<br><br>然后把下载好的主题以及对应的版本cp过来<br>cp /opt/CTFd/CTFd_chinese_CN/V3.1.1/CTFd-3.1.1/CTFd/themes .<br></code></pre></td></tr></table></figure>
 
 
 
-<p><img src="/2021/10/31/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%90%AD%E4%B8%80%E4%B8%AA%E9%9D%B6%E5%9C%BA%E5%B9%B6%E5%87%BA%E9%A2%98/image-20211031204430496.png" alt="image-20211031204430496"></p>
+<p><img src="/2021/10/31/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%90%AD%E4%B8%80%E4%B8%AA%E9%9D%B6%E5%9C%BA%E5%B9%B6%E5%87%BA%E9%A2%98/image-20211031204430496.png" srcset="/img/loading.gif" lazyload alt="image-20211031204430496"></p>
 <p>刷新下界面，就发现变成了中文，至此ctfd搭建完成</p>
 <h1 id="step3-出题"><a href="#step3-出题" class="headerlink" title="step3 出题"></a>step3 出题</h1><p>之前去测试环境，都是直接用宝塔去搭建的本地服务，这种方法有时候会出现很大的问题，例如搭建的环境存在写shell的地方，你的服务器很容易就被别人当做肉鸡来抓，有很多这种情况，去fofa上一搜，就能抓到很多肉鸡</p>
 <p>既然是出题，那就高端一点，利用dokcer去搭建环境，本次出题借鉴了一些别的比赛的源码，此题为天翼杯魔改的，</p>
 <h2 id="1-编写Dockerfile"><a href="#1-编写Dockerfile" class="headerlink" title="1.编写Dockerfile"></a>1.编写Dockerfile</h2><p>利用的是Dockerfile生成的images 然后run</p>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> sakadonohito/php5.<span class="number">6.23</span>-apache</span><br><span class="line"></span><br><span class="line"><span class="keyword">LABEL</span><span class="bash"> Author=<span class="string">&quot;Air&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> ./src/ /var/www/html/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> chmod -R 755 /var/www/html/ &amp;&amp; \</span></span><br><span class="line"><span class="bash">    chown -R root:root /var/www/html </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">80</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CMD</span><span class="bash"> sh -c <span class="string">&quot;apache2-foreground&quot;</span></span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs dockerfile"><span class="hljs-keyword">FROM</span> sakadonohito/php5.<span class="hljs-number">6.23</span>-apache<br><br><span class="hljs-keyword">LABEL</span><span class="bash"> Author=<span class="hljs-string">&quot;Air&quot;</span></span><br><br><span class="hljs-keyword">COPY</span><span class="bash"> ./src/ /var/www/html/</span><br><br><span class="hljs-keyword">RUN</span><span class="bash"> chmod -R 755 /var/www/html/ &amp;&amp; \</span><br><span class="bash">    chown -R root:root /var/www/html </span><br><br><span class="hljs-keyword">EXPOSE</span> <span class="hljs-number">80</span><br><br><span class="hljs-keyword">CMD</span><span class="bash"> sh -c <span class="hljs-string">&quot;apache2-foreground&quot;</span></span><br><br></code></pre></td></tr></table></figure>
 
-<h2 id="2-在src目录下准备好源码"><a href="#2-在src目录下准备好源码" class="headerlink" title="2.在src目录下准备好源码"></a>2.在src目录下准备好源码</h2><p><img src="/2021/10/31/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%90%AD%E4%B8%80%E4%B8%AA%E9%9D%B6%E5%9C%BA%E5%B9%B6%E5%87%BA%E9%A2%98/image-20211101113904514.png"></p>
-<h2 id="Step-4-运行docker"><a href="#Step-4-运行docker" class="headerlink" title="Step 4 运行docker"></a>Step 4 运行docker</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t trick:v3 .   // .的意思是把当前目录下的文件都给打包</span><br></pre></td></tr></table></figure>
+<h2 id="2-在src目录下准备好源码"><a href="#2-在src目录下准备好源码" class="headerlink" title="2.在src目录下准备好源码"></a>2.在src目录下准备好源码</h2><p><img src="/2021/10/31/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%90%AD%E4%B8%80%E4%B8%AA%E9%9D%B6%E5%9C%BA%E5%B9%B6%E5%87%BA%E9%A2%98/image-20211101113904514.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="Step-4-运行docker"><a href="#Step-4-运行docker" class="headerlink" title="Step 4 运行docker"></a>Step 4 运行docker</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker build -t trick:v3 .   // .的意思是把当前目录下的文件都给打包<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 7000:80 -d trick:v3</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker run -p 7000:80 -d trick:v3<br></code></pre></td></tr></table></figure>
 
 <p>然后把东西题目信息通过ctfd平台的后台管理界面传上去即可</p>
-</div><div class="article-licensing box"><div class="licensing-title"><p>手把手搭一个靶场并出题</p><p><a href="http://example.com/2021/10/31/手把手搭一个靶场并出题/">http://example.com/2021/10/31/手把手搭一个靶场并出题/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>Air</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2021-10-31</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2021-11-01</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="notification is-danger">You need to set <code>install_url</code> to use ShareThis. Please set it in <code>_config.yml</code>.</div></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">Like this article? Support the author with</h3><div class="buttons is-centered"><a class="button donate" href="/" target="_blank" rel="noopener" data-type="afdian"><span class="icon is-small"><i class="fas fa-charging-station"></i></span><span>Afdian.net</span></a><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>Alipay</span><span class="qrcode"><img src="/" alt="Alipay"></span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>Buy me a coffee</span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="patreon"><span class="icon is-small"><i class="fab fa-patreon"></i></span><span>Patreon</span></a><div class="notification is-danger">You forgot to set the <code>business</code> or <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.</div><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>Wechat</span><span class="qrcode"><img src="/" alt="Wechat"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2021/12/09/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%9C%80%E5%85%A8%E9%9D%A2%E7%9A%84%E6%80%BB%E7%BB%93/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">PHP命令执行最全面的总结</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2021/10/30/life/"><span class="level-item">Life</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">Comments</h3><div class="notification is-danger">You forgot to set the <code>shortname</code> for Disqus. Please set it in <code>_config.yml</code>.</div></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/1.png" alt="Air"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Air</p><p class="is-size-6 is-block">吾善养吾浩然气</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>中国 海口</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">11</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">0</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">0</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/airkqx" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/airkqx"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><!--!--><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-01-02T13:50:00.000Z">2022-01-02</time></p><p class="title"><a href="/2022/01/02/%E7%BB%992021%E6%9D%A5%E6%AE%B5%E6%80%BB%E7%BB%93/">给2021来段总结</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-12-09T11:41:29.000Z">2021-12-09</time></p><p class="title"><a href="/2021/12/09/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%9C%80%E5%85%A8%E9%9D%A2%E7%9A%84%E6%80%BB%E7%BB%93/">PHP命令执行最全面的总结</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-10-31T12:14:14.000Z">2021-10-31</time></p><p class="title"><a href="/2021/10/31/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%90%AD%E4%B8%80%E4%B8%AA%E9%9D%B6%E5%9C%BA%E5%B9%B6%E5%87%BA%E9%A2%98/">手把手搭一个靶场并出题</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-10-30T08:08:40.000Z">2021-10-30</time></p><p class="title"><a href="/2021/10/30/life/">Life</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-10-27T12:40:38.000Z">2021-10-27</time></p><p class="title"><a href="/2021/10/27/hero/">hero</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2022/01/"><span class="level-start"><span class="level-item">January 2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/12/"><span class="level-start"><span class="level-item">December 2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/10/"><span class="level-start"><span class="level-item">October 2021</span></span><span class="level-end"><span class="level-item tag">8</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/08/"><span class="level-start"><span class="level-item">August 2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><!--!--><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">Subscribe for updates</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div><div class="card widget"><div class="card-content"><div class="notification is-danger">You need to set <code>client_id</code> and <code>slot_id</code> to show this AD unit. Please set it in <code>_config.yml</code>.</div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">follow.it</h3><form action="" method="post" target="_blank"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Air" height="28"></a><p class="is-size-7"><span>&copy; 2022 Air</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
-            article: {
-                highlight: {
-                    clipboard: true,
-                    fold: 'unfolded'
-                }
-            }
-        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
-      window.cookieconsent.initialise({
-        type: "info",
-        theme: "edgeless",
-        static: false,
-        position: "bottom-left",
-        content: {
-          message: "This website uses cookies to improve your experience.",
-          dismiss: "Got it!",
-          allow: "Allow cookies",
-          deny: "Decline",
-          link: "Learn more",
-          policy: "Cookie Policy",
-          href: "https://www.cookiesandyou.com/",
-        },
-        palette: {
-          popup: {
-            background: "#edeff5",
-            text: "#838391"
-          },
-          button: {
-            background: "#4b81e8"
-          },
-        },
-      });
-    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
-            if (typeof $.fn.lightGallery === 'function') {
-                $('.article').lightGallery({ selector: '.gallery-item' });
-            }
-            if (typeof $.fn.justifiedGallery === 'function') {
-                if ($('.justified-gallery > p > .gallery-item').length) {
-                    $('.justified-gallery > p > .gallery-item').unwrap();
-                }
-                $('.justified-gallery').justifiedGallery();
-            }
-        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
-            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
-        });</script></body></html>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/12/09/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%9C%80%E5%85%A8%E9%9D%A2%E7%9A%84%E6%80%BB%E7%BB%93/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">PHP命令执行最全面的总结</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/10/30/Life/">
+                        <span class="hidden-mobile">Life</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

