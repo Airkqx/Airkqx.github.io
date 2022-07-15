@@ -223,48 +223,6 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2022/06/01/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%9B%B2%E6%8A%98%E7%9A%84%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" target="_self">
-          记一次曲折的渗透测试
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2022/06/01/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%9B%B2%E6%8A%98%E7%9A%84%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" target="_self">
-          
-          本次渗透测试为授权测试，信息皆做脱敏处理  启拿到网站，其中一个资产为该单位办公系统，看到界面比较老，感觉有戏， 所用系统为九思oa，先去搜一下已公开的poc看看能不能去打   搜到了两个，尝试无果，就把所有资产都丢进awvs里扫一下，抱着试一试的心态去看看能不能扫出东西来  发现此处存在sql注入，可执行sleep语句，就去抓个包，尝试用sqlmap一把梭 1python sqlmap.py
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-06-01 19:43" pubdate>
-              2022-06-01
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%AE%89%E5%85%A8%E7%A0%94%E7%A9%B6/">安全研究</a>
-            
-              <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">渗透测试</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
         <a href="/2022/03/27/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA%EF%BC%881%EF%BC%89/" target="_self">
           红日靶场（1）
         </a>
@@ -588,6 +546,39 @@
               <a href="/tags/CTF/">CTF</a>
             
           </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/10/10/%E5%BC%BA%E7%BD%91%E6%9D%AFupload/" target="_self">
+          强网杯upload
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/10/10/%E5%BC%BA%E7%BD%91%E6%9D%AFupload/" target="_self">
+          
+          登入以后首先是个页面 注册一个账号去登入  弹出了这个，好熟悉，thinkphp  登入之后是个文件上传的页面，尝试去上传一个php，发现不好使，(中间出现了一次报错，爆出了版本为5.1.35，去网上搜了exp，但是没有反序列化入口) 只能上传图片，用dirseach扫目录，发现是源码泄露 www.tar.gz 下载下来源码，进行审计，发现为mvc三层架构，去审计控制器里的源码 因为题目名字叫up
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-10 11:25" pubdate>
+              2021-10-10
+            </time>
+          </div>
+        
+        
         
       </div>
     </article>
