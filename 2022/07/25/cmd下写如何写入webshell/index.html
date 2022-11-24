@@ -16,21 +16,40 @@
   <meta name="author" content="Air">
   <meta name="keywords" content="">
   
-    <meta name="description" content="尽全力去做好一件事">
-<meta property="og:type" content="website">
-<meta property="og:title" content="标签 - JAVA">
-<meta property="og:url" content="http://example.com/tags/JAVA/index.html">
+    <meta name="description" content="在渗透测试中常常会遇到这样的问题：通过某某组件的nday获取到了一个windos的非交互式cmd权限(Linux通常可以直接反弹shell)，然后继续想往后渗透的时候就得上传webshell来方便我们进行后渗透，想写cmd文件却发现很费劲，这次就来总结下如何去写入cmd文件。  以冰蝎自带的jsp马为例 1、直接去写linux下自然是可以使用echo “xxxxxxxxx” &gt;1.php，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cmd下写如何写入webshell">
+<meta property="og:url" content="http://example.com/2022/07/25/cmd%E4%B8%8B%E5%86%99%E5%A6%82%E4%BD%95%E5%86%99%E5%85%A5webshell/index.html">
 <meta property="og:site_name" content="剑">
-<meta property="og:description" content="尽全力去做好一件事">
+<meta property="og:description" content="在渗透测试中常常会遇到这样的问题：通过某某组件的nday获取到了一个windos的非交互式cmd权限(Linux通常可以直接反弹shell)，然后继续想往后渗透的时候就得上传webshell来方便我们进行后渗透，想写cmd文件却发现很费劲，这次就来总结下如何去写入cmd文件。  以冰蝎自带的jsp马为例 1、直接去写linux下自然是可以使用echo “xxxxxxxxx” &gt;1.php，">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-07-25T08:30:42.000Z">
+<meta property="article:modified_time" content="2022-07-25T08:57:02.878Z">
 <meta property="article:author" content="Air">
+<meta property="article:tag" content="安全研究">
+<meta property="article:tag" content="渗透测试">
 <meta name="twitter:card" content="summary_large_image">
   
   
-  <title>标签 - JAVA - 剑</title>
+  <title>cmd下写如何写入webshell - 剑</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
@@ -57,7 +76,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -141,22 +160,52 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
+         style="background: url('/img/1.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="标签 - JAVA">
+            <span class="h2" id="subtitle" title="cmd下写如何写入webshell">
               
             </span>
 
             
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-07-25 16:30" pubdate>
+        2022年7月25日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      217 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      2 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
           </div>
 
-          
-            <div class="scroll-down-bar">
-              <i class="iconfont icon-arrowdown"></i>
-            </div>
           
         </div>
       </div>
@@ -165,40 +214,88 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 1 篇文章</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2022</p>
-    
-    <a href="/2022/03/01/Java%E5%AE%89%E5%85%A8%E4%B9%8B%E5%8F%8D%E5%B0%84/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Java安全</span>
-      <time style="float: right;">03-01</time>
-    </a>
-  
-</div>
 
-
-
-
-
-              </div>
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">cmd下写如何写入webshell</h1>
+            
+            <div class="markdown-body">
+              <blockquote>
+<p>在渗透测试中常常会遇到这样的问题：通过某某组件的nday获取到了一个windos的非交互式cmd权限(Linux通常可以直接反弹shell)，然后继续想往后渗透的时候就得上传webshell来方便我们进行后渗透，想写cmd文件却发现很费劲，这次就来总结下如何去写入cmd文件。</p>
+</blockquote>
+<p>以冰蝎自带的jsp马为例</p>
+<h1 id="1、直接去写"><a href="#1、直接去写" class="headerlink" title="1、直接去写"></a>1、直接去写</h1><p>linux下自然是可以使用echo “xxxxxxxxx” &gt;1.php，但是windows的话是不可以直接这样写的</p>
+<h1 id="2、"><a href="#2、" class="headerlink" title="2、"></a>2、</h1>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AE%89%E5%85%A8%E7%A0%94%E7%A9%B6/">安全研究</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">渗透测试</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/07/23/%E4%BB%8ERCE%E5%88%B0%E6%A1%8C%E9%9D%A2%E7%99%BB%E5%85%A5/">
+                        <span class="hidden-mobile">从RCE到桌面登入</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
 
     
@@ -281,6 +378,19 @@
   
 
 
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
 
 
 
