@@ -20,7 +20,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="cmd下写如何写入webshell">
 <meta property="og:url" content="http://example.com/2022/07/25/cmd%E4%B8%8B%E5%86%99%E5%A6%82%E4%BD%95%E5%86%99%E5%85%A5webshell/index.html">
-<meta property="og:site_name" content="剑">
+<meta property="og:site_name" content="离别钩">
 <meta property="og:description" content="在渗透测试中常常会遇到这样的问题：通过某某组件的nday获取到了一个windos的非交互式cmd权限(Linux通常可以直接反弹shell)，然后继续想往后渗透的时候就得上传webshell来方便我们进行后渗透，想写cmd文件却发现很费劲，这次就来总结下如何去写入cmd文件。  以冰蝎自带的jsp马为例 1、直接去写linux下自然是可以使用echo “xxxxxxxxx” &gt;1.php，">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-07-25T08:30:42.000Z">
@@ -31,7 +31,7 @@
 <meta name="twitter:card" content="summary_large_image">
   
   
-  <title>cmd下写如何写入webshell - 剑</title>
+  <title>cmd下写如何写入webshell - 离别钩</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -68,7 +68,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"75cfce3e1cee38407dbecbee1daa38de","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -261,6 +261,12 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2023/01/18/%E7%BB%992022%E6%9D%A5%E6%AE%B5%E6%80%BB%E7%BB%93/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">给2022来段总结</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
@@ -417,6 +423,30 @@
 
 
 
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?75cfce3e1cee38407dbecbee1daa38de";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 
